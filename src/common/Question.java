@@ -9,11 +9,20 @@
  */
 package common;
 
+import java.util.LinkedList;
+
 /**
  * A data structure used to store a single question.
  * @author Jack Li
  *
  */
 public class Question {
-
+	String text;
+	LinkedList<Choice> choices;
+	
+	public Question(String text) {
+		this.text = text;
+		choices = new LinkedList<>();
+	}
+	
 }

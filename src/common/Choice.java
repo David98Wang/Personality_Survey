@@ -15,5 +15,18 @@ package common;
  *
  */
 public class Choice {
+	//TODO finish implementing this
+	private String text;
+	private int type;
+	private double value;
+	
+	/**
+	 * @param text
+	 * @param type
+	 * @param value
+	 */
+	public Choice(String text, int type, double value) {
+		// TODO Auto-generated constructor stub
+	}
 
 }
