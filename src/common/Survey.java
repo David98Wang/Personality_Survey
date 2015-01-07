@@ -65,6 +65,8 @@ public class Survey {
 	 */
 	private static final Pattern LINE_DELIM = Pattern.compile("(?:(?:\\s*\\n)|(?:#[^\\n]*\\n)){1,}");
 	
+	
+	
 	public static Survey parse(String str) {
 		Survey res = new Survey();
 		Scanner in = new Scanner(str);
@@ -83,8 +85,9 @@ public class Survey {
 		for (int i = 0; i < num; ++i) {
 			Question cur;
 			//read question text
+			in.skip("[^\\n]*\\n");	//skip rest of line
 			in.useDelimiter(LINE_DELIM);
-			token = in.nextLine();
+			token = in.next();
 			cur = new Question(token);
 			
 			//read number of choices
@@ -93,20 +96,31 @@ public class Survey {
 			
 			//read choices
 			for (int j = 0; j < nChoices; ++j) {
-				in.useDelimiter(TOKEN_DELIM);
-				int type = in.nextInt();		//type of question
-				double points = in.nextInt();	//number of points awarded to that type
-				
+				Choice curChoice;				//a variable for the current choice
+				in.skip("[^\\n]*\\n");	//skip rest of line
 				in.useDelimiter(LINE_DELIM);
 				token = in.next();				//question text	
-				cur.choices.add(new Choice(token,type,points));
+				
+				curChoice = new Choice(token);
+				
+				in.useDelimiter(TOKEN_DELIM);
+				//TODO Verify this works
+				int type;						//buffer variable for reading type 
+				double points;					//number of points awarded to that type
+				while(in.hasNextInt()) {
+					type = in.nextInt();
+					points = in.nextDouble();
+					curChoice.values.add(new Choice.ValType(type,points));
+				}
+				
+				cur.choices.add(curChoice);
 			}
 			
-			
+			//add question to queue
 			res.questions.add(cur);
 		}
 		
-
+		
 		in.close();
 		return res;
 	}
