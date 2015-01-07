@@ -1,3 +1,4 @@
+package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,7 +17,7 @@ import org.jfree.util.Rotation;
 
 import javax.swing.JButton;
 
-public class BarChart extends JFrame{
+public class BarChart{
 	public static ChartPanel BarChart(double number[],String name[],String title,String domainLabel,String rangeLabel,String label)
 	{
 		CategoryDataset dataset = createDataset(name,number,label);
