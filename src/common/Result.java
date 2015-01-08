@@ -36,10 +36,34 @@ public class Result {
 	}
 	
 	/**
-	 * A public inner class for representing the requirements for this result to be displayed
+	 * A public inner class for representing the requirements for this result to be displayed.
+	 * <br>
+	 * <pre>
+	 * Requirements can 1 of 2 types:
+	 * 1. a non-zero type, followed by minimum and maximum requirements
+	 * 2. a zero type, and a target, which is only displayed if the target is a maximum
 	 */
-	public class Requirement {
+	public static class Requirement {
 		int type;
 		double min, max;
+		int target;
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.text);
+		sb.append('\n');	//new line
+		for (Requirement r : reqs) {
+			sb.append(r.type);
+			sb.append('\n');	//new line
+			if (r.type == 0) {
+				sb.append(r.target);
+			} else {
+				sb.append(r.min + " " + r.max);
+			}
+			sb.append('\n');	//new line
+		}
+		sb.append('\n');	//new line
+		return sb.toString();
 	}
 }

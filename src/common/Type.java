@@ -15,5 +15,16 @@ package common;
  *
  */
 public class Type {
-
+	/**
+	 * Text for this response
+	 */
+	String text;
+	/**
+	 * An integer representation for this type
+	 */
+	int index;
+	public Type(String text, int index) {
+		this.text = text;
+		this.index = index;
+	}
 }

@@ -13,6 +13,8 @@ import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import common.Result.Requirement;
+
 /**
  * A overall class storing everything needed for 1 survey.
  * 
@@ -89,6 +91,7 @@ public class Survey {
 	}
 
 	public static Survey parse(String str) {
+		//TODO fix this
 		Survey res = new Survey();
 		Scanner in = new Scanner(str);
 		String token;	// the next token in input
@@ -147,41 +150,38 @@ public class Survey {
 		// read results
 		for (int i = 0; i < num; ++i) {
 			Result cur;
-			// read question text
+			// read results text
 			in.skip("[^\\n]*\\n");	// skip rest of line
 			in.useDelimiter(LINE_DELIM);
 			token = in.next();
 			cur = new Result(token);
 
-			// read number of choices
-			in.useDelimiter(TOKEN_DELIM);
-			int nChoices = in.nextInt();
-
-			// read choices
-			for (int j = 0; j < nChoices; ++j) {
-				Choice curChoice;				// a variable for the current choice
-				in.skip("[^\\n]*\\n");	// skip rest of line
-				in.useDelimiter(LINE_DELIM);
-				token = in.next();				// question text
-
-				curChoice = new Choice(token);
-
-				in.useDelimiter(TOKEN_DELIM);
-
-				int type;						// buffer variable for reading type
-				double points;					// number of points awarded to that type
-				while (in.hasNext("[\\d]+\\s+[\\d\\.]+")) {
-					type = in.nextInt();
-					points = in.nextDouble();
-					curChoice.values.add(new Choice.ValType(type, points));
+			// read results
+			while (in
+					.hasNext("[\\d]+\\s*\\n(?:[\\d\\.]+|Infinity)\\s+(?:[\\d\\.]+|Infinity)?")) {
+				Requirement r = new Requirement();	//a temp variable to construct requirements
+				r.type = in.nextInt();
+				if (r.type != 0) {
+					r.min = in.nextDouble();
+					r.max = in.nextDouble();
+				} else {
+					r.target = in.nextInt();
 				}
-
-				//cur.choices.add(curChoice);
+				cur.reqs.add(r);
 			}
 
 			// add question to queue
-			//res.questions.add(cur);
+			res.results.add(cur);
 		}
+//		//read types
+//		num = in.nextInt();
+//		for (int i = 1; i <= num; ++i) {
+//			in.skip("[^\\n]*\\n");	// skip rest of line
+//			in.useDelimiter(LINE_DELIM);
+//			token = in.next();
+//			Type cur = new Type(token,i);
+//			res.types.add(cur);
+//		}
 		in.close();
 		return res;
 	}
