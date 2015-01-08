@@ -57,4 +57,13 @@ public class Choice {
 			value = 0;
 		};
 	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.text);
+		for (ValType v : values)
+			sb.append(v.type + " " + v.value + " ");
+		sb.append('\n');	//newline
+		return sb.toString();
+	}
 }
