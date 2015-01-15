@@ -61,6 +61,7 @@ public class Choice {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.text);
+		sb.append('\n');	//newline
 		for (ValType v : values)
 			sb.append(v.type + " " + v.value + " ");
 		sb.append('\n');	//newline

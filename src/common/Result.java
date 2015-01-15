@@ -47,6 +47,17 @@ public class Result {
 		int type;
 		double min, max;
 		int target;
+		public String toString() {
+			StringBuilder sb = new StringBuilder();
+			sb.append(this.type);
+			sb.append('\n');	//new line
+			if (this.type == 0) {
+				sb.append(this.target);
+			} else {
+				sb.append(this.min + " " + this.max);
+			}
+			return sb.toString();
+		}
 	}
 	
 	public String toString() {
@@ -54,13 +65,7 @@ public class Result {
 		sb.append(this.text);
 		sb.append('\n');	//new line
 		for (Requirement r : reqs) {
-			sb.append(r.type);
-			sb.append('\n');	//new line
-			if (r.type == 0) {
-				sb.append(r.target);
-			} else {
-				sb.append(r.min + " " + r.max);
-			}
+			sb.append(r);
 			sb.append('\n');	//new line
 		}
 		sb.append('\n');	//new line

@@ -41,11 +41,11 @@ Unknown	#response text
 #the program will choose the result that can be satisfied with the largest minimum
 # for example, if the person has a score of 3 for type 1, the second result will be chosen
 
-6	#number of results
+7	#number of results
 
 You choose more blue than red.	#result text
 0	#0 for special type of result, indicating the maximum is choosen
-1	#result is displayed if type 1 is the maximum
+1	# 1 has to be the maximum for this result to be displayed#result is displayed if type 1 is the maximum
 
 You are a good person. #result text
 1	#result type
@@ -82,3 +82,6 @@ introvert	#the text displayed for type 1, all in one line
 crazy	#the text displayed for type 2, all in one line
 extrovert	
 dumb
+
+#add a link to a website
+www.google.com

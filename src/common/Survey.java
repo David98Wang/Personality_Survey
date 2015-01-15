@@ -86,15 +86,15 @@ public class Survey {
 		sb.append(types.size());
 		sb.append('\n');	// newline
 		for (Type t : types)
-			sb.append(t);
+			sb.append(t + "\n");
 		return sb.toString();
 	}
 
 	public static Survey parse(String str) {
-		//TODO fix this
+		// TODO fix this
 		Survey res = new Survey();
 		Scanner in = new Scanner(str);
-		String token;	// the next token in input
+		String token = null;	// the next token in input
 		int num;	// temporary variable storing the number of the current item
 
 		// read the title
@@ -131,8 +131,11 @@ public class Survey {
 
 				int type;						// buffer variable for reading type
 				double points;					// number of points awarded to that type
-				while (in.hasNext("[\\d]+\\s+[\\d\\.]+")) {
-					type = in.nextInt();
+				while (in.hasNextInt()) {
+					token = in.next();
+					if (!in.hasNextDouble())
+						break;
+					type = Integer.parseInt(token);
 					points = in.nextDouble();
 					curChoice.values.add(new Choice.ValType(type, points));
 				}
@@ -146,7 +149,9 @@ public class Survey {
 
 		// read number of results
 		in.useDelimiter(TOKEN_DELIM);
-		num = in.nextInt();
+		if (token == null)
+			token = in.next();
+		num = Integer.parseInt(token);
 		// read results
 		for (int i = 0; i < num; ++i) {
 			Result cur;
@@ -155,12 +160,19 @@ public class Survey {
 			in.useDelimiter(LINE_DELIM);
 			token = in.next();
 			cur = new Result(token);
-
+			
+			//use token deliminator to read tokens instead of lines
+			in.useDelimiter(TOKEN_DELIM);
+			
 			// read results
-			while (in
-					.hasNext("[\\d]+\\s*\\n(?:[\\d\\.]+|Infinity)\\s+(?:[\\d\\.]+|Infinity)?")) {
-				Requirement r = new Requirement();	//a temp variable to construct requirements
-				r.type = in.nextInt();
+			//in.hasNext("[\\d]+\\s*\\n(?:[\\d\\.]+|Infinity)\\s+(?:[\\d\\.]+|Infinity)?");
+			while (in.hasNextInt()) {
+				Requirement r = new Requirement();	// a temp variable to construct requirements
+				token = in.next();
+				if (!in.hasNextDouble())
+					break;
+				r.type = Integer.parseInt(token);
+				
 				if (r.type != 0) {
 					r.min = in.nextDouble();
 					r.max = in.nextDouble();
@@ -168,20 +180,25 @@ public class Survey {
 					r.target = in.nextInt();
 				}
 				cur.reqs.add(r);
+				
 			}
 
 			// add question to queue
 			res.results.add(cur);
 		}
-//		//read types
-//		num = in.nextInt();
-//		for (int i = 1; i <= num; ++i) {
-//			in.skip("[^\\n]*\\n");	// skip rest of line
-//			in.useDelimiter(LINE_DELIM);
-//			token = in.next();
-//			Type cur = new Type(token,i);
-//			res.types.add(cur);
-//		}
+		
+		//read types
+		if (token == null)
+			token = in.next();
+		num = Integer.parseInt(token);
+		//read types
+		 for (int i = 1; i <= num; ++i) {
+			 in.skip("[^\\n]*\\n"); // skip rest of line
+			 in.useDelimiter(LINE_DELIM);
+			 token = in.next().trim();
+			 Type cur = new Type(token,i);
+			 res.types.add(cur);
+		 }
 		in.close();
 		return res;
 	}
