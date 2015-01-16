@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * @author Jack Li
  *
  */
-public class Result {
+public class Result implements Comparable<Result>{
 	/**
 	 * Text to display for this result
 	 */
@@ -71,5 +71,14 @@ public class Result {
 		}
 		sb.append('\n');	//new line
 		return sb.toString();
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
+	@Override
+	public int compareTo(Result o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

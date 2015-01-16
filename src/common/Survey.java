@@ -9,8 +9,7 @@
  */
 package common;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -31,15 +30,15 @@ public class Survey {
 	/**
 	 * The questions in this survey
 	 */
-	private LinkedList<Question> questions;
+	private ArrayList<Question> questions;
 	/**
 	 * The results in this survey
 	 */
-	private LinkedList<Result> results;
+	private ArrayList<Result> results;
 	/**
 	 * The types of choices that exist
 	 */
-	private LinkedList<Type> types;
+	private ArrayList<Type> types;
 
 	/**
 	 * Url of website for more information for this survey
@@ -50,9 +49,9 @@ public class Survey {
 	 * Private empty constructor used for parsing
 	 */
 	private Survey() {
-		questions = new LinkedList<>();
-		results = new LinkedList<>();
-		types = new LinkedList<>();
+		questions = new ArrayList<>();
+		results = new ArrayList<>();
+		types = new ArrayList<>();
 	}
 
 	/**
@@ -62,9 +61,9 @@ public class Survey {
 	 */
 	public Survey(String title) {
 		this.title = title;
-		questions = new LinkedList<>();
-		results = new LinkedList<>();
-		types = new LinkedList<>();
+		questions = new ArrayList<>();
+		results = new ArrayList<>();
+		types = new ArrayList<>();
 	}
 
 	/**
@@ -151,7 +150,6 @@ public class Survey {
 
 				cur.choices.add(curChoice);
 			}
-			System.out.println("read\n" + cur);
 			// add question to queue
 			res.questions.add(cur);
 		}
@@ -191,6 +189,7 @@ public class Survey {
 				cur.reqs.add(r);
 
 			}
+			System.out.println("Read:\n" + cur);
 			// add question to queue
 			res.results.add(cur);
 		}
