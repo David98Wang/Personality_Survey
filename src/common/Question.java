@@ -9,6 +9,8 @@
  */
 package common;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -17,12 +19,18 @@ import java.util.LinkedList;
  *
  */
 public class Question {
+	/**
+	 * The text to be displayed for this question
+	 */
 	String text;
-	LinkedList<Choice> choices;
+	/**
+	 * The choices for this question
+	 */
+	ArrayList<Choice> choices;
 	
 	public Question(String text) {
 		this.text = text;
-		choices = new LinkedList<>();
+		choices = new ArrayList<>();
 	}
 	
 	public String toString() {
@@ -36,4 +44,41 @@ public class Question {
 		sb.append('\n');	//newline
 		return sb.toString();
 	}
+
+	/**
+	 * Shuffles the choice in the questions
+	 */
+	public void shuffle() {
+		Collections.shuffle(choices);
+	}
+
+	/**
+	 * @return the text
+	 */
+	public String getText() {
+		return text;
+	}
+
+	/**
+	 * @param text the text to set
+	 */
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	/**
+	 * @return the choices
+	 */
+	public ArrayList<Choice> getChoices() {
+		return choices;
+	}
+
+	/**
+	 * @param choices the choices to set
+	 */
+	public void setChoices(ArrayList<Choice> choices) {
+		this.choices = choices;
+	}
+	
+		
 }
