@@ -1,0 +1,171 @@
+Learning Style
+20
+What kind of book would you like to read for fun?
+3
+A book with lots of pictures in it
+1 1
+A book with lots of words in it
+2 1
+A book with word sesarches or crossword puzzles
+3 1
+When you are not sure how to spell a word, what are you most likely to do?
+3
+Write it down to see if it looks right
+1 1
+Spell it out loud to see if it sounds right
+2 1
+Trace the letters in the air (finger spelling)
+3 1
+You're out shopping for clothes, and you're waiting in line to pay. What are you most likely to do while you are waiting?
+3
+Look around at other clothes on the racks
+1 1
+Talk to the person next to you in line
+2 1
+Fidget or move back and forth
+3 1
+When you see the wrd "cat", what do you do first?
+3
+Picture a cat in your mind
+1 1
+Say the word "cat" to yourself
+2 1
+Think about being with a cat (petting it or hearing it purr)
+3 1
+What's the best way for you to study for a test?
+3
+Read the book or your notes and review pictures or charts
+1 1
+Have someone ask you questions that you can answer out loud
+2 1
+Make up index cards that you can review
+3 1
+What's the best way for you to learn about how something works (like a computer or a video game)?
+3
+Get someone to show you
+1 1
+Read about it or listen to someone explain it
+2 1
+Figure it out on your own
+3 1
+If you went to a school dance, what would you be most likely to remember the next day?
+3
+The faces of the people who were there
+1 1
+The music that was played 
+2 1
+The dance moves you did and the food you ate
+3 1
+What do you find most distracting when you are trying to study?
+3
+People walking past you
+1 1
+Loud noises
+2 1
+An uncomfortable chair
+3 1
+When you are angry, what are you most likely to do?
+3
+Put on your "mad" face
+1 1
+Yell and scream
+2 1
+Slame doors
+3 1
+When you are happy, what are you most likely to do?
+3
+Smile from ear to ear
+1 1
+Talk up a storm
+2 1
+Act really hyper
+3 1
+When in a new place, how do you find your way around?
+3
+Look for a map or dictionary that shows you where everything is
+1 1
+Ask someone for directions
+2 1
+Just start walking around until you find what your're looking for
+3 1
+Of these three classes, which is your favorite?
+3
+Art class
+1 1
+Music class
+2 1
+Gym class
+3 1
+When you hear a song on the radio, what are you most likely to do?
+3
+Picture the video that goes along with it
+1 1
+Sing or hum along with the music
+2 1
+Start dancing or tapping your foot
+3 1
+What do you find most distracting when in class?
+3
+Lights that are too bright or too dim
+1 1
+Noises from the hallway or outside the building (like traffic or someone cutting the grass)
+2 1
+The temperature being too hot or too cold
+3 1
+What do you like to do to relax?
+3
+Read
+1 1
+Listen to music
+2 1
+Exercise (walk, run, play sports, etc.)
+3 1
+What is the best way for you to remember a friend's phone number?
+3
+Picture the numbers on the phone as you would dial them
+1 1
+Say it out loud over and over and over
+2 1
+Write it done or store it in your phone contact list
+3 1
+If you won a game, which of these three prizes would you choose?
+3
+A poster for the wall
+1 1
+A music CD or mp3 download
+2 1
+A game of some kind (or a football or soccer ball, etc.)
+3 1
+Which would you rather go with a group of friends?
+3
+A movie
+1 1
+A concert
+2 1
+An amusement park
+3 1
+What are you most likely to remeber about new people you meet?
+3
+Their face bot not their name
+1 1
+Their name but not their face
+2 1
+What you talked about with them
+3 1
+When you give someone directions to your house, what are you most likely to tell them?
+3
+A description of building and landmarks they will pass on the way
+1 1
+The names of the roads or streets they will be on
+2 1
+"Follow me--it will be easier if I just show you how to get there." 
+3 1
+
+4
+
+0.0 20.0
+
+4
+Visual
+Auditory
+kinesthetic
