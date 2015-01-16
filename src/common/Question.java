@@ -25,4 +25,15 @@ public class Question {
 		choices = new LinkedList<>();
 	}
 	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.text);
+		sb.append('\n');	//newline
+		sb.append(choices.size());
+		sb.append('\n');	//newline
+		for (Choice c : choices)
+			sb.append(c);
+		sb.append('\n');	//newline
+		return sb.toString();
+	}
 }

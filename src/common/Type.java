@@ -10,10 +10,25 @@
 package common;
 
 /**
- * A data structure to store information requred for the types of responses
+ * A data structure to store information required for the types of responses
  * @author Jack Li
  *
  */
 public class Type {
-
+	/**
+	 * Text for this response
+	 */
+	String text;
+	/**
+	 * An integer representation for this type
+	 */
+	int index;
+	public Type(String text, int index) {
+		this.text = text;
+		this.index = index;
+	}
+	
+	public String toString() {
+		return this.text;
+	}
 }

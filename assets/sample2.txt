@@ -16,7 +16,7 @@ Random Test 1
 What is your favorite color? #question in one line
 4	#number of answers
 Blue	#response text
-1 3.2	#response type, response points
+1 3.2 2 4 3 5	#response type, response points
 Red	#response text
 2 1	#response type, response points
 Yellow	#response text
@@ -41,11 +41,11 @@ Unknown	#response text
 #the program will choose the result that can be satisfied with the largest minimum
 # for example, if the person has a score of 3 for type 1, the second result will be chosen
 
-6	#number of results
+8	#number of results
 
 You choose more blue than red.	#result text
 0	#0 for special type of result, indicating the maximum is choosen
-1	#result is displayed if type 1 is the maximum
+1	# 1 has to be the maximum for this result to be displayed#result is displayed if type 1 is the maximum
 
 You are a good person. #result text
 1	#result type
@@ -64,12 +64,42 @@ You are a red person. #result text
 0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
 
 You are a yellow person. #result text
-3	#result type
-0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
+3				#result type
+1.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
+4				#add extra criteria that also needs to be fulfilled for result to be displayed
+2 5				#additional range for the new criteria
 
 You are an orange person. #result text
 4	#result type
 0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
+2
+4 5
+8
+4 5
+16
+4 5
+19
+3 5
+24
+4 5
+31
+4 5
+
+You are an orange person. #result text
+4	#result type
+0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
+-1	#-1 indicates compare 4 is less than 5
+4 5
+8
+4 5
+16
+4 5
+19
+3 5
+24
+4 5
+31
+4 5
 
 #after the results are the types (short name for the types of scores displayed on charts etc.)
 #first line is the number of types
@@ -80,3 +110,6 @@ introvert	#the text displayed for type 1, all in one line
 crazy	#the text displayed for type 2, all in one line
 extrovert	
 dumb
+
+#add a link to a website
+www.google.com

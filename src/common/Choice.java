@@ -9,24 +9,62 @@
  */
 package common;
 
+import java.util.LinkedList;
+
 /**
  * A data structure used to store a single choice.
+ * 
  * @author Jack Li
- *
+ * 
  */
 public class Choice {
-	//TODO finish implementing this
-	private String text;
-	private int type;
-	private double value;
-	
 	/**
-	 * @param text
-	 * @param type
-	 * @param value
+	 * The text to be displayed for this choice
 	 */
-	public Choice(String text, int type, double value) {
-		// TODO Auto-generated constructor stub
+	String text;
+	/**
+	 * The effect of choosing this choice
+	 */
+	LinkedList<ValType> values;
+
+	/**
+	 * Default constructor
+	 * 
+	 * @param text
+	 *            the text of this choice
+	 */
+	public Choice(String text) {
+		this.text = text;
+		this.values = new LinkedList<>();
 	}
 
+	/**
+	 * An inner class for representing the type and value of choices 
+	 * @author Jack Li
+	 *
+	 */
+	static class ValType {
+		int type;
+		double value;
+
+		public ValType(int type, double value) {
+			this.type = type;
+			this.value = value;
+		};
+
+		public ValType() {
+			type = 0;
+			value = 0;
+		};
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.text);
+		sb.append('\n');	//newline
+		for (ValType v : values)
+			sb.append(v.type + " " + v.value + " ");
+		sb.append('\n');	//newline
+		return sb.toString();
+	}
 }
