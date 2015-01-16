@@ -1,6 +1,6 @@
 #Each question contains: two 3,1,0, two 2,1,0
-
-
+Multiple Intelligence Test #suvey name
+32 #number of questions
 #Linguistics
 
 I can easily talk or argue my point
@@ -351,6 +351,8 @@ You have interpersonal intelligence! You are understanding and can easily intera
 You have naturalistic intelligence! You can easily adapt to your environment. You are very interested and curious about your surroundings. You enjoy spending your time outdoors and exploring nature. You learn the best through hands-on, touching, and moving experiences.
 8
 0 10
+
+8
 
 Linguistics
 Mathematical
