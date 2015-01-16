@@ -64,7 +64,7 @@ public class Parser {
 		
 		//get all the .txt files
 		File[] files = dir.listFiles(new FileFilter() {
-			/* 
+			/** 
 			 * A file filter for txt files
 			 * @see java.io.FileFilter#accept(java.io.File)
 			 */
@@ -77,7 +77,13 @@ public class Parser {
 			throw new IOException("Error reading files from " + dir.getAbsolutePath());
 		Survey[] surveys = new Survey[files.length];
 		for (int i = 0; i < files.length; ++i) {
+			System.out.println("Reading " + files[i].getAbsolutePath());
+			try {
 			surveys[i] = readSurvey(files[i]);
+			} catch(Exception e) {
+				System.err.println("Error occurred while reading the maze@" + files[i].getAbsolutePath() + ":");
+				e.printStackTrace();
+			}
 		}
 		return surveys;
 	}

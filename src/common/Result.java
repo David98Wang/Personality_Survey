@@ -42,10 +42,11 @@ public class Result {
 	 * Requirements can 1 of 2 types:
 	 * 1. a non-zero type, followed by minimum and maximum requirements
 	 * 2. a zero type, and a target, which is only displayed if the target is a maximum
+	 * 3. a -1 type, returning true if a < b
 	 */
 	public static class Requirement {
 		int type;
-		double min, max;
+		double min, max;	//TODO fix name
 		int target;
 		public String toString() {
 			StringBuilder sb = new StringBuilder();

@@ -26,7 +26,7 @@ public class ParserTest {
 	public static void main(String[] args) throws IllegalArgumentException, IOException {
 		Survey[] surveys = Parser.readAll(new File("./assets"));
 		for (Survey s : surveys)
-			System.out.println(s);
+			System.out.println("-------------------------------------------\n"+s);
 	}
 
 }

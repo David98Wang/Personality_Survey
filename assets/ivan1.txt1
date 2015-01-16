@@ -1,0 +1,359 @@
+#Each question contains: two 3,1,0, two 2,1,0
+
+
+#Linguistics
+
+I can easily talk or argue my point
+3
+Always
+1 3
+Sometimes 
+1 1
+Never 
+1 0
+
+I am interested in learning new languages
+3
+Always 
+1 3
+Sometimes 
+1 1
+Never 
+1 0
+
+I keep a journal to document my daily life
+3
+Always 
+1 2
+Sometimes 
+1 1
+Never 
+1 0
+
+I often learn about new words to improve my vocabulary.
+3
+Always 
+1 2
+Sometimes 
+1 1
+Never 
+1 0
+
+
+
+
+
+#Logical/Math
+
+I enjoy solving puzzles and riddles
+3
+Always 
+2 2
+Sometimes 
+2 1     
+Never 
+2 0
+
+I can easily identify patterns and relationships
+3
+Always 
+2 2
+Sometimes 
+2 1
+Never 
+2 0
+
+I like working with numbers
+3
+Always 
+2 3
+Sometimes 
+2 1
+Never 
+2 0
+
+I enjoy solving mathematical problems
+3
+Always 
+2 3
+Sometimes 
+2 1
+Never 
+2 0
+
+
+
+
+
+#Musical
+
+Music is a big part of my life
+3
+Always 
+3 3
+Sometimes 
+3 1
+Never 
+3 0
+
+I play a musical instrument
+3
+Always 
+3 2
+Sometimes 
+3 1
+Never 
+3 0
+
+Music that I listen to is often a resemblance of how I feel
+3
+Always 
+3 3
+Sometimes 
+3 1
+Never 
+3 0
+
+I enjoy a wide variety of musical styles
+3
+Always 
+3 2
+Sometimes 
+3 1
+Never 
+3 0
+
+
+
+
+
+#Spatial
+
+I have a good sense of direction
+3
+Always 
+4 3
+Sometimes 
+4 1
+Never 
+4 0
+
+I can easily differentiate north from south
+3
+Always 
+4 2
+Sometimes 
+4 1
+Never 
+4 0
+
+
+I can easily identify objects from all different viewing angles
+3
+Always 
+4 3
+Sometimes 
+4 1
+Never 
+4 0
+
+I learn best from visual presentations such as movies, pictures, and videos.
+3
+Always 
+4 2
+Sometimes 
+4 1
+Never 
+4 0
+
+
+
+#Body/Kinesthetic
+
+I enjoy playing sports
+3
+Always 
+5 3
+Sometimes 
+5 1
+Never 
+5 0
+
+I learn the best through building objects and moving them around
+3
+Always
+5 3
+Sometimes
+5 1
+Never
+5 0
+
+I consider myself physically fit
+3
+Always
+5 2
+Sometimes
+5 1
+Never
+5 0
+
+I have good balance and hand-eye coordination
+3
+Always
+5 2
+Sometimes
+5 1
+Never
+5 0
+
+
+
+#Intrapersonal
+
+
+I am well aware of your strengths and weaknesses.
+3
+Always
+6 3
+Sometimes
+6 1
+Never
+6 0
+
+You are independent and do not like being told what to do.
+3
+Always
+6 3
+Sometimes
+6 1
+Never
+6 0
+
+You spend a lot of time self-reflecting.
+3
+Always
+6 2
+Sometimes
+6 1
+Never
+6 0
+
+You prefer to do things on your own.
+3
+Always
+6 2
+Sometimes
+6 1
+Never
+6 0
+
+
+
+#Interpersonal
+
+I like working in teams
+3
+Always
+7 3
+Sometimes
+7 1
+Never
+7 0
+
+I can easily communicate with others around me
+3
+Always
+7 3
+Sometimes
+7 1
+Never
+7 0
+
+I have a good sense of what others think of me
+3
+Always
+7 2
+Sometimes
+7 1
+Never
+7 0
+
+You are able to pick up other people’s mood, characteristics, emotions, and intentions of those around you
+3
+Always
+7 2
+Sometimes
+7 1
+Never
+7 0
+
+#Naturalistic
+
+I'd rather spend my time outdoors than indoors
+3
+Always
+8 3
+Sometimes
+8 1
+Never
+8 0
+
+I can easily make observations based on my surroundings
+3
+Always
+8 2
+Sometimes
+8 1
+Never
+8 0
+
+I am interested in animals plants, and nature.
+3
+Always
+8 3
+Sometimes
+8 1
+Never
+8 0
+
+I enjoy outdoor activites such as hunting, fishing, and hiking.
+3
+Always
+8 2
+Sometimes
+8 1
+Never
+8 0
+
+8
+
+You have linguistic intelligence! You utilize your words effectively. You have highly developed auditory skills and often think in words. You like reading, playing word games, and making up poetry or stories. You can be taught by encouraging them to say and see words, read books together.
+0
+1
+You have mathematical intelligence! You think conceptually, abstractly and are able to see and explore patterns and relationships. You like to experiment, solve puzzles, ask cosmic questions. You can be taught through logic games, investigations, and mysteries.
+0
+1
+You have musical intelligence! You show sensitivity to rhythm and sound. You love music, but you are also sensitive to sounds in their environments. You may study better with music in the background. You can be taught by turning lessons into lyrics, speaking rhythmically, tapping out time. 
+0
+1
+You have spatial intelligence! You think in terms of physical space, as do architects and sailors. You are very aware of your environments. You like to make diagrams, do jigsaw puzzles, and read and write maps. You can be taught through drawings, verbal and physical imagery.
+0
+1
+You have kinesthetic intelligence! You have a keen sense of body awareness. You like movement, making things, touching. You communicate well through body language and is taught best through physical activity, hands-on learning, acting out, and role playing.
+0
+1
+You have intrapersonal intelligence! You well understand your own interests and goals. You tend to shy away from others. You are in tune with your inner feelings. You have wisdom, intuition and motivation, a strong will, and confidence. You learn the best through independent study and self-projects.
+0
+1
+You have interpersonal intelligence! You are understanding and can easily interact with others. You learn the best through interaction. You have many friends, empathy for others, and can easily get along  with others. You can be taught through group activities, seminars, and dialogues. 
+0
+1
+Linguistics
+Mathematical
+Musical
+Spatial
+Kinesthetic
+Intrapersonal
+Interpersonal
+Naturalistic
+http://www.tecweb.org/styles/gardner.html

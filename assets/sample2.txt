@@ -41,7 +41,7 @@ Unknown	#response text
 #the program will choose the result that can be satisfied with the largest minimum
 # for example, if the person has a score of 3 for type 1, the second result will be chosen
 
-7	#number of results
+8	#number of results
 
 You choose more blue than red.	#result text
 0	#0 for special type of result, indicating the maximum is choosen
@@ -72,6 +72,34 @@ You are a yellow person. #result text
 You are an orange person. #result text
 4	#result type
 0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
+2
+4 5
+8
+4 5
+16
+4 5
+19
+3 5
+24
+4 5
+31
+4 5
+
+You are an orange person. #result text
+4	#result type
+0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
+-1	#-1 indicates compare 4 is less than 5
+4 5
+8
+4 5
+16
+4 5
+19
+3 5
+24
+4 5
+31
+4 5
 
 #after the results are the types (short name for the types of scores displayed on charts etc.)
 #first line is the number of types

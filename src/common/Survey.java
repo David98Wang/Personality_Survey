@@ -9,6 +9,8 @@
  */
 package common;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -38,6 +40,11 @@ public class Survey {
 	 * The types of choices that exist
 	 */
 	private LinkedList<Type> types;
+
+	/**
+	 * Url of website for more information for this survey
+	 */
+	private String website;
 
 	/**
 	 * Private empty constructor used for parsing
@@ -87,6 +94,8 @@ public class Survey {
 		sb.append('\n');	// newline
 		for (Type t : types)
 			sb.append(t + "\n");
+		sb.append(this.website);
+		sb.append('\n');	// newline
 		return sb.toString();
 	}
 
@@ -142,7 +151,7 @@ public class Survey {
 
 				cur.choices.add(curChoice);
 			}
-
+			System.out.println("read\n" + cur);
 			// add question to queue
 			res.questions.add(cur);
 		}
@@ -160,19 +169,19 @@ public class Survey {
 			in.useDelimiter(LINE_DELIM);
 			token = in.next();
 			cur = new Result(token);
-			
-			//use token deliminator to read tokens instead of lines
+
+			// use token deliminator to read tokens instead of lines
 			in.useDelimiter(TOKEN_DELIM);
-			
+
 			// read results
-			//in.hasNext("[\\d]+\\s*\\n(?:[\\d\\.]+|Infinity)\\s+(?:[\\d\\.]+|Infinity)?");
+			// in.hasNext("[\\d]+\\s*\\n(?:[\\d\\.]+|Infinity)\\s+(?:[\\d\\.]+|Infinity)?");
 			while (in.hasNextInt()) {
 				Requirement r = new Requirement();	// a temp variable to construct requirements
 				token = in.next();
 				if (!in.hasNextDouble())
 					break;
 				r.type = Integer.parseInt(token);
-				
+
 				if (r.type != 0) {
 					r.min = in.nextDouble();
 					r.max = in.nextDouble();
@@ -180,25 +189,27 @@ public class Survey {
 					r.target = in.nextInt();
 				}
 				cur.reqs.add(r);
-				
-			}
 
+			}
 			// add question to queue
 			res.results.add(cur);
 		}
-		
-		//read types
+
+		// read types
 		if (token == null)
 			token = in.next();
 		num = Integer.parseInt(token);
-		//read types
-		 for (int i = 1; i <= num; ++i) {
-			 in.skip("[^\\n]*\\n"); // skip rest of line
-			 in.useDelimiter(LINE_DELIM);
-			 token = in.next().trim();
-			 Type cur = new Type(token,i);
-			 res.types.add(cur);
-		 }
+		// read types
+		for (int i = 1; i <= num; ++i) {
+			in.skip("[^\\n]*\\n"); // skip rest of line
+			in.useDelimiter(LINE_DELIM);
+			token = in.next().trim();
+			Type cur = new Type(token, i);
+			res.types.add(cur);
+		}
+		in.skip("\\s*"); // skip any remaining whitespace
+		token = in.next();
+		res.website = token;
 		in.close();
 		return res;
 	}

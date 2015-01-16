@@ -1,0 +1,1836 @@
+#comments begin with a #
+#blank lines are ignored
+
+#very first line is name of test (human readable form)
+
+Career Test 1
+
+#first are the questions
+
+#first line is number of questions
+#after that are the questions
+#response types start from 0
+
+35	#number of questions
+
+Do you accept inferior working conditions? #question in one line #q1
+5	#number of answers
+Absolutely yes #response text
+1 5
+Maybe yes
+1 4
+Unsure
+1 3
+Maybe no
+1 2
+Absolutely no
+1 1
+
+
+Do you accept jobs that are potentially dangerous? #q2
+5
+Absolutely yes
+2 5
+Maybe yes
+2 4
+Unsure
+2 3
+Maybe no
+2 2
+Absolutely no
+2 1
+
+Do you prefer working totally by yourself rather than with colleagues? #q3
+5	#number of answers
+Absolutely yes
+3 5
+Maybe yes
+3 4
+Unsure
+3 3
+Maybe no
+3 2
+Absolutely no
+3 1
+
+
+Do you like jobs that require much carefulness, precision or concentration? #q4
+5
+Absolutely yes
+4 5
+Maybe yes
+4 4
+Unsure
+4 3
+Maybe no
+4 2
+Absolutely no
+4 1
+
+
+Do you like jobs that are highly respected and admired?
+5
+Absolutely yes
+5 5
+Maybe yes
+5 4
+Unsure
+5 3
+Maybe no
+5 2
+Absolutely no
+5 1
+
+
+Do you like jobs that requires showing a lot in front of public?
+5
+Absolutely yes
+6 5
+Maybe yes
+6 4
+Unsure
+6 3
+Maybe no
+6 2
+Absolutely no
+6 1
+
+
+Do you accept jobs with repetitive and boring duties?
+5
+Absolutely yes
+7 5
+Maybe yes
+7 4
+Unsure
+7 3
+Maybe no
+7 2
+Absolutely no
+7 1
+
+
+Do you accept jobs with comparatively low salaries?
+5
+Absolutely yes
+8 5
+Maybe yes
+8 4
+Unsure
+8 3
+Maybe no
+8 2
+Absolutely no
+8 1
+
+
+Do you like taking care of people?
+5
+Absolutely yes
+9 5
+Maybe yes
+9 4
+Unsure
+9 3
+Maybe no
+9 2
+Absolutely no
+9 1
+
+
+Do you like jobs that require lots of interaction with people?
+5
+Absolutely yes
+10 5
+Maybe yes
+10 4
+Unsure
+10 3
+Maybe no
+10  2
+Absolutely no
+10  1
+
+
+Do you like jobs that require much talking?
+5
+Absolutely yes
+11 5
+Maybe yes
+11 4
+Unsure
+11 3
+Maybe no
+11 2
+Absolutely no
+11 1
+
+
+Do you like jobs that require much thinking?
+5
+Absolutely yes
+12 5
+Maybe yes
+12 4
+Unsure
+12 3
+Maybe no
+12 2
+Absolutely no
+12 1
+
+
+Do you like leading&controling people?
+5
+Absolutely yes
+13 5
+Maybe yes
+13 4
+Unsure
+13 3
+Maybe no
+13 2
+Absolutely no
+13 1
+
+
+Do you think you are a very creative person?
+5
+Absolutely yes
+14 5
+Maybe yes
+14 4
+Unsure
+14 3
+Maybe no
+14 2
+Absolutely no
+14 1
+
+
+Do you want to work indoors?
+5
+Absolutely yes
+15 5
+Maybe yes
+15 4
+Unsure
+15 3
+Maybe no
+15 2
+Absolutely no
+15 1
+
+
+Do you want to work outdoors?
+5
+Absolutely yes
+16 5
+Maybe yes
+16 4
+Unsure
+16 3
+Maybe no
+16 2
+Absolutely no
+16 1
+
+
+Do you like jobs that involves much usage of computers?
+5
+Absolutely yes
+17 5
+Maybe yes
+17 4
+Unsure
+17 3
+Maybe no
+17 2
+Absolutely no
+17 1
+
+
+Do you like jobs that require much memorizing?
+5
+Absolutely yes
+18 5
+Maybe yes
+18 4
+Unsure
+18 3
+Maybe no
+18 2
+Absolutely no
+18 1
+
+
+Do you like jobs that require large amount of complicated academic knowledge/abilities?
+5
+Absolutely yes
+19 5
+Maybe yes
+19 4
+Unsure
+19 3
+Maybe no
+19 2
+Absolutely no
+19 1
+
+
+Do you accept jobs that are so busy that they may sometimes occupy your free time?
+5
+Absolutely yes
+20 5
+Maybe yes
+20 4
+Unsure
+20 3
+Maybe no
+20 2
+Absolutely no
+20 1
+
+
+Do you like jobs that require critical thinking in a fairly short time?
+5
+Absolutely yes
+21 5
+Maybe yes
+21 4
+Unsure
+21 3
+Maybe no
+21 2
+Absolutely no
+21 1
+
+
+Do you like career paths that are very hard to pursue?(e.g. politicians, astronomers)
+5
+Absolutely yes
+22 5
+Maybe yes
+22 4
+Unsure
+22 3
+Maybe no
+22 2
+Absolutely no
+22 1
+
+
+Do you like jobs that require much researching?
+5
+Absolutely yes
+23 5
+Maybe yes
+23 4
+Unsure
+23 3
+Maybe no
+23 2
+Absolutely no
+23 1
+
+
+Do you like jobs that require much bodily movements?
+5
+Absolutely yes
+24 5
+Maybe yes
+24 4
+Unsure
+24 3
+Maybe no
+24 2
+Absolutely no
+24 1
+
+
+Do you like entertaining people?
+5
+Absolutely yes
+25 5
+Maybe yes
+25 4
+Unsure
+25 3
+Maybe no
+25 2
+Absolutely no
+25 1
+
+
+Do you like jobs that deal with numbers?
+5
+Absolutely yes
+26 5
+Maybe yes
+26 4
+Unsure
+26 3
+Maybe no
+26 2
+Absolutely no
+26 1
+
+
+Do you like animals?
+5
+Absolutely yes
+27 5
+Maybe yes
+27 4
+Unsure
+27 3
+Maybe no
+27 2
+Absolutely no
+27 1
+
+
+Do you like plants?
+5
+Absolutely yes
+28 5
+Maybe yes
+28 4
+Unsure
+28 3
+Maybe no
+28 2
+Absolutely no
+28 1
+
+
+Do you like space-related jobs?
+5
+Absolutely yes
+29 5
+Maybe yes
+29 4
+Unsure
+29 3
+Maybe no
+29 2
+Absolutely no
+29 1
+
+
+Do you like arts?
+5
+Absolutely yes
+30 5
+Maybe yes
+30 4
+Unsure
+30 3
+Maybe no
+30 2
+Absolutely no
+30 1
+
+
+Do you like working with tools/machines?
+5
+Absolutely yes
+31 5
+Maybe yes
+31 4
+Unsure
+31 3
+Maybe no
+31 2
+Absolutely no
+31 1
+
+
+Do you like music?
+5
+Absolutely yes
+32 5
+Maybe yes
+32 4
+Unsure
+32 3
+Maybe no
+32 2
+Absolutely no
+32 1
+
+
+Do you like food-related jobs?
+5
+Absolutely yes
+33 5
+Maybe yes
+33 4
+Unsure
+33 3
+Maybe no
+33 2
+Absolutely no
+33 1
+
+
+Are you interested in laws?
+5
+Absolutely yes
+34 5
+Maybe yes
+34 4
+Unsure
+34 3
+Maybe no
+34 2
+Absolutely no
+34 1
+
+
+
+Are you interested in literature?
+5
+Absolutely yes
+35 5
+Maybe yes
+35 4
+Unsure
+35 3
+Maybe no
+35 2
+Absolutely no
+35 1
+
+
+#after questions are the results
+#first line is the number of results (not necessarily the same as number of types)
+
+#the program will choose the result that can be satisfied with the largest minimum
+# for example, if the person has a score of 3 for type 1, the second result will be chosen
+
+78	#number of results***
+
+You choose more blue than red.	#result text
+0	#0 for special type of result, indicating the maximum is choosen
+1	#result is displayed if type 1 is the maximum
+
+Accountant 
+4
+3 5
+7
+3 5
+12
+3 5
+15
+2 5
+17
+2 5
+19
+3 5
+20
+3 5
+26
+4 5
+
+Auditor
+4
+3 5
+7
+3 5
+10
+3 5
+12
+4 5
+15
+1 4
+19
+4 5
+20
+3 5
+26
+3 5
+
+Bookkeeper
+4
+3 5
+7
+3 5
+8
+2 5
+17
+2 5
+26
+3 5
+
+Cashier
+4
+2 5
+5
+1 4
+7
+3 5
+10
+3 5
+15
+3 5
+20
+2 5
+26
+3 5
+
+Courier
+1
+3 5
+2
+3 5
+3
+3 5
+4
+3 5
+7
+3 5
+20
+3 5
+24
+4 5
+
+Data Manager
+4
+3 5
+7
+3 5
+12
+3 5
+15
+3 5
+17
+3 5
+19
+3 5
+21
+3 5
+26
+3 5
+
+Debt Collector
+1
+3 5
+2
+3 5
+5
+1 4
+10
+3 5
+11
+3 5
+15
+1 4
+20
+3 5
+24
+4 5
+
+Interviewer/Reporter
+1
+3 5
+2
+3 5
+4
+2 5
+5
+2 5
+6
+3 5
+10
+4 5
+11
+4 5
+12
+3 5
+14
+3 5
+16
+3 5
+20
+4 5
+24
+3 5
+
+Librarian
+3
+3 5
+4
+2 5
+8
+3 5
+9
+2 5
+15
+4 5
+17
+3 5
+
+Office Supervisors/Managers
+3
+3 5
+9
+3 5
+10
+4 5
+11
+3 5
+12
+3 5
+13
+4 5
+15
+3 5
+
+Receptionist
+6
+3 5
+7
+3 5
+8
+4 5
+10
+4 5
+
+Secretary
+3
+4 5
+4
+4 5
+10
+3 5
+11
+3 5
+15
+3 5
+17
+3 5
+20
+4 5
+
+Conservation worker
+1
+2 5
+2
+2 5
+3
+3 5
+4
+2 5
+16
+4 5
+24
+3 5
+27
+4 5
+28
+4 5
+
+Farmer
+1
+3 5
+7
+2 5
+8
+3 5
+16
+3 5
+24
+4 5
+28
+2 5
+33
+2 5
+
+Fisherman
+1
+3 5
+2
+4 5
+7
+2 5
+8
+3 5
+16
+3 5
+24
+4 5
+33
+2 5
+
+Financial Analyst
+4
+4 5
+12
+4 5
+15
+2 5
+19
+3 5
+26
+4 5
+
+Construction worker
+1
+4 5
+2
+3 5
+7
+3 5
+8
+3 5
+20
+3 5
+24
+3 5
+31
+3 5
+
+Electrician
+1
+4 5
+2
+3 5
+4
+3 5
+7
+3 5
+8
+3 5
+20
+3 5
+24
+3 5
+31
+3 5
+
+Actor
+2
+2 5
+5
+3 5
+6
+3 5
+10
+3 5
+11
+4 5
+14
+3 5
+16
+2 5
+18
+3 5
+20
+3 5
+24
+3 5
+25
+3 5
+
+Artist
+3
+3 5
+4
+3 5
+5
+3 5
+8
+3 5
+14
+4 5
+15
+3 5
+25
+2 5
+30
+3 5
+
+Editor
+3
+3 5
+4
+3 5
+5
+3 5
+9
+3 5
+15
+3 5
+35
+3 5
+
+Choreographer
+10
+3 5
+13
+3 5
+14
+4 5
+18
+2 5
+24
+3 5
+30
+2 5
+
+Dancer
+2
+3 5
+6
+3 5
+7
+2 5
+10
+2 5
+18
+3 5
+24
+3 5
+
+Designer
+12
+4 5
+14
+4 5
+30
+4 5
+
+Musician
+8
+3 5
+14
+4 5
+19
+3 5
+25
+2 5
+32
+4 5
+
+Photographer
+4
+3 5
+8
+3 5
+14
+4 5
+25
+2 5
+30
+4 5
+
+Producer
+10
+4 5
+11
+4 5
+12
+4 5
+13
+4 5
+14
+4 5
+31
+2 5
+
+Singer
+5
+3 5
+6
+4 5
+11
+3 5
+20
+4 5
+22
+3 5
+25
+3 5
+32
+4 5
+
+Computer Programmer
+4
+3 5
+7
+4 5
+15
+3 5
+17
+4 5
+19
+3 5
+26
+3 5
+
+Writer
+3
+4 5
+5
+3 5
+12
+3 5
+14
+4 5
+15
+3 5
+25
+3 5
+35
+4 5
+
+Home Tutor
+4
+4 5
+7
+3 5
+8
+3 5
+9
+4 5
+11
+4 5
+12
+4 5
+14
+2 5
+18
+4 5
+25
+3 5
+
+Teacher
+4
+4 5
+5
+2 5
+7
+3 5
+8
+3 5
+9
+4 5
+10
+4 5
+11
+4 5
+12
+4 5
+13
+4 5
+14
+4 5
+18
+4 5
+23
+3 5
+25
+3 5
+
+Doctor
+2
+2 5
+4
+4 5
+9
+4 5
+10
+4 5
+12
+4 5
+19
+4 5
+20
+4 5
+21
+2 5
+22
+3 5
+
+Dentist
+4
+4 5
+9
+4 5
+10
+4 5
+19
+4 5
+20
+4 5
+21
+2 5
+22
+3 5
+
+Home Healthcare Assistant
+4
+3 5
+9
+4 5
+10
+3 5
+15
+3 5
+19
+3 5
+
+Medical Assistant
+4
+4 5
+9
+3 5
+10
+2 5
+15
+3 5
+19
+3 5
+
+Nurse
+4
+4 5
+7
+3 5
+8
+2 5
+9
+4 5
+10
+4 5
+15
+2 5
+25
+3 5
+
+Vet
+4
+3 5
+9
+3 5
+15
+2 5
+19
+3 5
+27
+5 5
+
+Nutritionist
+3
+3 5
+4
+3 5
+12
+3 5
+19
+4 5
+23
+4 5
+33
+4 5
+
+Pharmacist
+3
+3 5
+4
+4 5
+10
+4 5
+12
+3 5
+19
+4 5
+
+Social Worker
+2
+3 5
+4
+3 5
+6
+3 5
+7
+3 5
+9
+4 5
+10
+4 5
+15
+1 4
+20
+3 5
+24
+3 5
+
+Waiter
+7
+4 5
+8
+4 5
+9
+3 5
+10
+4 5
+11
+3 5
+15
+2 5
+
+
+Jeweler
+2
+3 5
+4
+5 5
+7
+4 5
+19
+4 5
+31
+3 5
+
+Archivist
+4
+5 5
+7
+4 5
+8
+4 5
+15
+3 5
+
+Sport Coach
+4
+3 5
+7
+3 5
+8
+3 5
+10
+4 5
+11
+4 5
+13
+4 5
+24
+4 5
+
+Court Reporter
+4
+4 5
+6
+3 5
+7
+3 5
+15
+2 5
+18
+3 5
+21
+4 5
+34
+4 5
+
+Curator
+4
+4 5
+5
+3 5
+6
+3 5
+10
+4 5
+13
+4 5
+22
+4 5
+
+Director
+1
+3 5
+2 
+3 5
+4
+4 5
+5
+4 5
+6
+4 5
+10
+4 5
+11
+4 5
+12
+4 5
+13
+4 5
+19
+4 5
+20
+4 5
+25
+4 5
+22
+4 5
+30
+4 5
+
+Judge
+4
+4 5
+10
+3 5
+12
+4 5
+13
+3 5
+21
+3 5
+22
+3 5
+30
+4 5
+34
+4 5
+
+Lawyer
+3
+2 5
+4
+4 5
+6
+3 5
+10
+3 5
+12
+3 5
+18
+3 5
+19
+4 5
+21
+3 5
+22
+3 5
+30
+4 5
+34
+4 5
+
+Statistician
+4
+3 5
+12
+3 5
+17
+3 5
+19
+4 5
+21
+3 5
+23
+3 5
+26
+4 5
+
+Translator
+3
+2 5
+4
+3 5
+7
+2 5
+12
+3 5
+14
+3 5
+18
+4 5
+19
+4 5
+23
+4 5
+35
+4 5
+
+Repairer
+1
+3 5
+4
+3 5
+7
+3 5
+8
+3 5
+24
+4 5
+31
+4 5
+
+Barber
+4
+3 5
+7
+3 5
+8
+3 5
+9
+3 5
+10
+2 5
+15
+2 5
+24
+4 5
+31
+3 5
+
+Cook
+2
+3 5
+4
+3 5
+7
+3 5
+14
+3 5
+24
+3 5
+33
+4 5
+
+Fireman
+1
+4 5
+2
+5 5
+5
+3 5
+9
+4 5
+15
+1 4
+24
+5 5
+
+Security Guard
+1
+4 5
+2
+4 5
+15
+1 4
+24
+3 5
+
+Police Officer
+1
+4 5
+2
+4 5
+5
+3 5
+9
+3 5
+15
+1 4
+24
+4 5
+34
+3 5
+
+Architect
+4
+4 5
+12
+4 5
+14
+4 5
+19
+4 5
+23
+3 5
+25
+3 5
+26
+2 5
+31
+3 5
+
+Astronomer
+2
+4 5
+4
+4 5
+5
+4 5
+13
+3 5
+16
+3 5
+19
+4 5
+22
+4 5
+24
+4 5
+29
+4 5
+
+Politician
+2
+4 5
+3
+4 5
+4
+3 5
+5
+3 5
+6
+5 5
+10
+4 5
+11
+4 5
+12
+4 5
+13
+4 5
+20
+4 5
+22
+4 5
+
+Scientist
+2
+3 5
+3
+1 3
+4
+4 5
+7
+4 5
+12
+4 5
+15
+3 5
+17
+2 5
+19
+4 5
+20
+4 5
+
+Engineer
+4
+4 5
+10
+3 5
+12
+4 5
+14
+3 5
+17
+3 5
+19
+4 5
+20
+4 5
+22
+3 5
+26
+3 5
+30
+3 5
+
+Mathematician
+4
+4 5
+8
+3 5
+10
+1 3
+12
+4 5
+14
+2 4
+19
+4 5
+26
+5 5
+
+Pilot
+2
+3 5
+4
+3 5
+7
+3 5
+13
+3 5
+19
+3 5
+21
+4 5
+29
+4 5
+
+Driver
+2
+3 5
+4
+2 5
+7
+3 5
+8
+4 5
+16
+3 5
+31
+2 5
+
+Detective
+1
+3 5
+2 
+3 5
+3
+4 5
+4
+4 5
+9
+4 5
+10
+4 5
+11
+4 5
+12
+4 5
+15
+4 5
+16
+4 5
+18
+4 5
+19
+4 5
+22
+4 5
+23
+4 5
+24
+4 5
+31
+2 5
+33
+3 5
+
+Zookeeper
+1
+3 5
+2 
+3 5
+4
+4 5
+16
+4 5
+19
+3 5
+27
+3 5
+
+Philosopher
+3
+4 5
+5
+4 5
+6
+4 5
+11
+1 3
+12
+4 5
+22
+3 5
+35
+3 5
+
+Salesman
+3
+3 5
+7
+3 5
+8
+3 5
+10
+4 5
+11
+4 5
+12
+4 5
+16
+3 5
+19
+2 5
+24
+3 5
+
+Stockbroker
+4
+3 5
+10
+3 5
+12
+4 5
+13
+3 5
+15
+2 5
+17
+3 5
+21
+4 5
+26
+4 5
+
+Merchant
+4
+3 5
+10
+3 5
+11
+4 5
+12
+4 5
+13
+4 5
+16
+2 5
+20
+4 5
+21
+4 5
+26
+4 5
+
+Military Serviceman
+2
+4 5
+4
+2 5
+5
+3 5
+16
+4 5
+21
+4 5
+24
+4 5
+31
+4 5
+
+Gardener
+4
+4 5
+7
+4 5
+8
+4 5
+14
+4 5
+16
+3 5
+19
+2 5
+24
+4 5
+28
+4 5
+31
+4 5
+
+Cleaner
+8
+5 5
+16
+3 5
+24
+4 5
+
+Psychology therapist
+4
+3 5
+9
+4 5
+11
+4 5
+12
+4 5
+15
+3 5
+19
+4 5
+21
+3 5
+
+Miner
+2
+4 5
+8
+4 5
+16
+4 5
+19
+3 5
+24
+4 5
+31
+4 5
+
+#after the results are the types (short name for the types of scores displayed on charts etc.)
+#first line is the number of types
+#then the description of that type, starting from 1
+
+35	#35 types of responses, from 1 to 35 inclusive
+Preference for bad working conditions
+Preference for dangerous work
+Preference for working alone
+Preference for working with carefulness,precision or concentration
+Preference for jobs that are highly admired
+Preference for showing oneself in front of public
+Preference for doing repetitive work without getting bored
+Preference for jobs with low salary
+Preference for taking care of people
+Preference for interacting with people
+Preference for talking
+Preference for thinking
+Preference for leadership/control
+Preference for creativity
+Preference for working indoors
+Preference for working outdoors
+Preference for working with computers
+Preference for memorizing
+Preference for jobs that requires large amount of complicated academic knowledge
+Preference for busy works
+Preference for critical thinking/making decisions
+Preference for jobs that are difficult to get
+Preference for researching
+Preference for bodily movements
+Preference for entertaining people
+Preference for numbers
+Preference for working with animals
+Preference for working with plants
+Preference for working with space-related things
+Preference for art-related jobs
+Preference for tools/machines
+Preference for music
+Preference for food-related jobs
+Preference for law-related jobs
+Preference for literature
+
+http://www.tcu.gov.on.ca/eng/quizzes/workpreference_quiz.html
