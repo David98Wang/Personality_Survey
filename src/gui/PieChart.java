@@ -30,7 +30,6 @@ public class PieChart {
 	}
 
 	/**
-	 * @wbp.parser.entryPoint
 	 */
 	private static PieDataset createDataset(String name[], double number[]) {
 		DefaultPieDataset result = new DefaultPieDataset();

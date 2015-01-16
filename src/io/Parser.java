@@ -55,8 +55,8 @@ public class Parser {
 	 * Reads all surveys in the given directory, and returns them as an array.
 	 * @param dir the directory
 	 * @return an array containing all surveys in a directory
-	 * @throws IOException
-	 * @throws IllegalArgumentException
+	 * @throws IOException if an I/O exception occurs
+	 * @throws IllegalArgumentException	if a file is given as the input instead of a directory
 	 */
 	public static Survey[] readAll(File dir) throws IOException, IllegalArgumentException{
 		if (dir.isFile())

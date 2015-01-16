@@ -43,6 +43,7 @@ public class Result implements Comparable<Result>{
 	 * 1. a non-zero type, followed by minimum and maximum requirements
 	 * 2. a zero type, and a target, which is only displayed if the target is a maximum
 	 * 3. a -1 type, returning true if a < b
+	 * </pre>
 	 */
 	public static class Requirement {
 		int type;
