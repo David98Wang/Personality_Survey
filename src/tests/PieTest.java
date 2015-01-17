@@ -10,7 +10,7 @@ public class PieTest extends JFrame{
 	public static double[] y=new double[10];
 	public PieTest()
 	{
-        ChartPanel p =  PieChart.PieChart("a", "b", x, y);
+        ChartPanel p =  PieChart.createPieChart("a", "b", x, y);
         
         p.setPreferredSize(new java.awt.Dimension(500, 270));
         p.setVisible(true);

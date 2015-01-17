@@ -1,7 +1,4 @@
 package gui;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -9,7 +6,6 @@ import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
-import javax.swing.JButton;
 
 public class PieChart {
 
@@ -20,7 +16,7 @@ public class PieChart {
 	 * @param number
 	 * @return ChartPanel
 	 */
-	public static ChartPanel PieChart(String applicationTitle,
+	public static ChartPanel createPieChart(String applicationTitle,
 			String chartTitle, String name[], double number[]) {
 		PieDataset dataset = createDataset(name, number);
 		JFreeChart chart = createChart(dataset, chartTitle);
