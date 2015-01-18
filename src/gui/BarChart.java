@@ -11,6 +11,16 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @date January 8, 2014
  */
 public class BarChart {
+	/**
+	 * Create and return chart panel
+	 * @param number
+	 * @param name
+	 * @param title
+	 * @param domainLabel
+	 * @param rangeLabel
+	 * @param label
+	 * @return ChartPanel
+	 */
 	public static ChartPanel BarChart(double number[], String name[],
 			String title, String domainLabel, String rangeLabel, String label) 
 	{
@@ -21,6 +31,13 @@ public class BarChart {
 		return panel;
 	}
 
+	/**
+	 * Create and return Default Category data set
+	 * @param name
+	 * @param number
+	 * @param label
+	 * @return DefaultCategoryDataset
+	 */
 	public static CategoryDataset createDataset(String name[], double number[],
 			String label) // create bar chart data set
 	{
@@ -31,6 +48,14 @@ public class BarChart {
 		return dataset;
 	}
 
+	/**
+	 * Create and return bar chart
+	 * @param dataset
+	 * @param title
+	 * @param dl
+	 * @param rl
+	 * @return Chart
+	 */
 	public static JFreeChart createChart(CategoryDataset dataset, String title,
 			String dl, String rl) {
 		JFreeChart chart = ChartFactory.createBarChart3D(title, // title
