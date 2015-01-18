@@ -13,6 +13,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 /**
  * A class offering utilities for different parts of this project
@@ -31,5 +32,11 @@ public class Util {
 		//tell the Component to paint over the image
 		src.paint(res.getGraphics());
 		return res;
+	}
+	public static void showError(String msg) {
+		JOptionPane.showMessageDialog(null, msg,"Error",JOptionPane.ERROR_MESSAGE);
+	}
+	public static boolean showConfirm(String msg) {
+		return JOptionPane.showConfirmDialog(null, msg, "Confirm", JOptionPane.YES_NO_CANCEL_OPTION) == JOptionPane.YES_OPTION;
 	}
 }

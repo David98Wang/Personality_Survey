@@ -45,7 +45,7 @@ public class Result implements Comparable<Result>{
 	 * 3. a -1 type, returning true if a < b
 	 * </pre>
 	 */
-	public static class Requirement {
+	public static class Requirement implements Comparable<Requirement>{
 		int type;
 		double min, max;	//TODO fix name
 		int target;
@@ -59,6 +59,17 @@ public class Result implements Comparable<Result>{
 				sb.append(this.min + " " + this.max);
 			}
 			return sb.toString();
+		}
+		@Override
+		public int compareTo(Requirement o) {
+			if (this.type != o.type)
+				return this.type - o.type;
+			else {
+				if (this.min != o.min)
+					return (int) (this.min - o.min);
+				else
+					return (int) (this.max - o.max);
+			}
 		}
 	}
 	
@@ -74,12 +85,15 @@ public class Result implements Comparable<Result>{
 		return sb.toString();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
 	@Override
 	public int compareTo(Result o) {
-		// TODO Auto-generated method stub
+		if (this.reqs.size() != o.reqs.size())
+			return this.reqs.size() - o.reqs.size();
+		else
+			for (int i = 0; i < reqs.size(); ++i) {
+				if (this.reqs.get(i).compareTo(o.reqs.get(i))!=0)
+					return this.reqs.get(i).compareTo(o.reqs.get(i));
+			}
 		return 0;
 	}
 }

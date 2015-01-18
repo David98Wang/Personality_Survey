@@ -12,10 +12,12 @@ package io;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.Reader;
 
 import common.Survey;
+import common.Util;
 
 /**
  * Class for handling file I/O and parsing the survey
@@ -24,6 +26,17 @@ import common.Survey;
  *
  */
 public class Parser {
+	public static final FileFilter fileFilter = new FileFilter() {
+		/** 
+		 * A file filter for txt files
+		 * @see java.io.FileFilter#accept(java.io.File)
+		 */
+		@Override
+		public boolean accept(File pathname) {
+			return pathname.getName().endsWith(".txt");
+		}
+	};
+	
 	/**
 	 * Reads all the contents of a file and returns it in a single string.
 	 * @param file the file to be read
@@ -48,7 +61,10 @@ public class Parser {
 	 */
 	public static Survey readSurvey(File file) throws IOException {
 		String src = slurp(file);
-		return Survey.parse(src);
+		Survey s = Survey.parse(src);
+		if (s==null)
+			Util.showError("Format error for file at " + file.getAbsolutePath() + " !");
+		return s;
 	}
 	
 	/**
@@ -63,16 +79,7 @@ public class Parser {
 			throw new IllegalArgumentException("File given as argument instead of directory!");
 		
 		//get all the .txt files
-		File[] files = dir.listFiles(new FileFilter() {
-			/** 
-			 * A file filter for txt files
-			 * @see java.io.FileFilter#accept(java.io.File)
-			 */
-			@Override
-			public boolean accept(File pathname) {
-				return pathname.getName().endsWith(".txt");
-			}
-		});
+		File[] files = dir.listFiles(fileFilter);
 		if (files == null)
 			throw new IOException("Error reading files from " + dir.getAbsolutePath());
 		Survey[] surveys = new Survey[files.length];
