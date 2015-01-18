@@ -11,9 +11,11 @@ package common;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import common.Choice.ValType;
 import common.Result.Requirement;
 
 /**
@@ -22,7 +24,21 @@ import common.Result.Requirement;
  * @author Jack Li
  * 
  */
+/**
+ * @author Jack Li
+ *
+ */
 public class Survey {
+	/**
+	 * Delimiter used to read one token (a word, number, etc) at a time while
+	 * skipping comments for the scanner
+	 */
+	private static final Pattern TOKEN_DELIM = Pattern.compile("(?:(?:\\s+)|(?:#[^\\n]*)){1,}");
+	/**
+	 * Delimiter used to read one line at a time while skipping comments for the
+	 * scanner
+	 */
+	private static final Pattern LINE_DELIM = Pattern.compile("(?:(?:\\s*\\n)|(?:#[^\\n]*\\n)){1,}");
 	/**
 	 * The name of this survey
 	 */
@@ -46,6 +62,18 @@ public class Survey {
 	private String website;
 
 	/**
+	 * A boolean indicated whether or not this survey has been initialized,
+	 * during which the questions are shuffled, and the results and types are
+	 * sorted.
+	 */
+	private boolean initialized;
+
+	/**
+	 * The current question being displayed
+	 */
+	private int index;
+
+	/**
 	 * Private and only constructor used for parsing, meaning that surveys can
 	 * only be created from the {@link #parse(String)} function.
 	 */
@@ -54,172 +82,28 @@ public class Survey {
 		results = new ArrayList<>();
 		types = new ArrayList<>();
 		index = 0;
+		initialized = false;
 	}
 
-	/**
-	 * Delimiter used to read one token (a word, number, etc) at a time while
-	 * skipping comments for the scanner
-	 */
-	private static final Pattern TOKEN_DELIM = Pattern.compile("(?:(?:\\s+)|(?:#[^\\n]*)){1,}");
-	/**
-	 * Delimiter used to read one line at a time while skipping comments for the
-	 * scanner
-	 */
-	private static final Pattern LINE_DELIM = Pattern.compile("(?:(?:\\s*\\n)|(?:#[^\\n]*\\n)){1,}");
-
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(this.name);
-		sb.append('\n'); // newline
-		sb.append(questions.size());
-		sb.append('\n'); // newline
-		for (Question q : questions)
-			sb.append(q);
-		sb.append(results.size());
-		sb.append('\n'); // newline
-		for (Result r : results)
-			sb.append(r);
-		sb.append(types.size());
-		sb.append('\n'); // newline
-		for (Type t : types)
-			sb.append(t + "\n");
-		sb.append(this.website);
-		sb.append('\n'); // newline
-		return sb.toString();
+	private void initialize() {
+		this.shuffle();
+		Collections.sort(types);
+		Collections.sort(results);
 	}
-
+	
 	/**
-	 * Parses the survey represented by the input string according to the
-	 * specified format in the example file.
+	 * Increments points for the given choice
 	 * 
-	 * @param str
-	 *            the input string
-	 * @return the survey represented by the input string
+	 * @param choice
 	 */
-	public static Survey parse(String str) {
-		try {
-			Survey res = new Survey();
-			Scanner in = new Scanner(str);
-			String token = null; // the next token in input
-			int num; // temporary variable storing the number of the current
-						// item
-
-			// read the name
-			in.useDelimiter(LINE_DELIM);
-			res.name = in.next();
-
-			// read number of questions
-			in.useDelimiter(TOKEN_DELIM);
-			num = in.nextInt();
-
-			// read questions
-			for (int i = 0; i < num; ++i) {
-				Question cur;
-				// read question text
-				in.skip("[^\\n]*\\n"); // skip rest of line
-				in.useDelimiter(LINE_DELIM);
-				token = in.next();
-				cur = new Question(token);
-
-				// read number of choices
-				in.useDelimiter(TOKEN_DELIM);
-				int nChoices = in.nextInt();
-
-				// read choices
-				for (int j = 0; j < nChoices; ++j) {
-					Choice curChoice; // a variable for the current choice
-					in.skip("[^\\n]*\\n"); // skip rest of line
-					in.useDelimiter(LINE_DELIM);
-					token = in.next(); // question text
-
-					curChoice = new Choice(token);
-
-					in.useDelimiter(TOKEN_DELIM);
-
-					int type; // buffer variable for reading type
-					double points; // number of points awarded to that type
-					while (in.hasNextInt()) {
-						token = in.next();
-						if (!in.hasNextDouble())
-							break;
-						type = Integer.parseInt(token);
-						points = in.nextDouble();
-						curChoice.values.add(new Choice.ValType(type, points));
-					}
-
-					cur.choices.add(curChoice);
-				}
-				// add question to queue
-				res.questions.add(cur);
-			}
-
-			// read number of results
-			in.useDelimiter(TOKEN_DELIM);
-			if (token == null)
-				token = in.next();
-			num = Integer.parseInt(token);
-			// read results
-			for (int i = 0; i < num; ++i) {
-				Result cur;
-				// read results text
-				in.skip("[^\\n]*\\n"); // skip rest of line
-				in.useDelimiter(LINE_DELIM);
-				token = in.next();
-				cur = new Result(token);
-
-				// use token deliminator to read tokens instead of lines
-				in.useDelimiter(TOKEN_DELIM);
-
-				// read results
-				// in.hasNext("[\\d]+\\s*\\n(?:[\\d\\.]+|Infinity)\\s+(?:[\\d\\.]+|Infinity)?");
-				while (in.hasNextInt()) {
-					Requirement r = new Requirement(); // a temp variable to
-														// construct
-														// requirements
-					token = in.next();
-					if (!in.hasNextDouble())
-						break;
-					r.type = Integer.parseInt(token);
-
-					if (r.type != 0) {
-						r.min = in.nextDouble();
-						r.max = in.nextDouble();
-					} else {
-						r.target = in.nextInt();
-					}
-					cur.reqs.add(r);
-
-				}
-				// add question to queue
-				res.results.add(cur);
-			}
-
-			// read types
-			if (token == null)
-				token = in.next();
-			num = Integer.parseInt(token);
-			// read types
-			for (int i = 1; i <= num; ++i) {
-				in.skip("[^\\n]*\\n"); // skip rest of line
-				in.useDelimiter(LINE_DELIM);
-				token = in.next().trim();
-				Type cur = new Type(token, i);
-				res.types.add(cur);
-			}
-			in.skip("\\s*"); // skip any remaining whitespace
-			token = in.next();
-			res.website = token;
-			in.close();
-			return res;
-		} catch (Exception e) {
-			return null;
+	public void choose(Choice choice) {
+		LinkedList<ValType> values = choice.getValues();
+		//increment values
+		for (ValType v : values) {
+			types.get(v.type-1).points+=v.value;
 		}
 	}
-
-	/**
-	 * The current question being displayed
-	 */
-	private int index;
+	
 
 	/**
 	 * Gets the next question in the sequence for this survey
@@ -259,18 +143,6 @@ public class Survey {
 	}
 
 	/**
-	 * Shuffle the questions and their corresponding choices
-	 */
-	public void shuffle() {
-		for (Question q : questions) {
-			q.shuffle();
-		}
-		Collections.shuffle(questions);
-
-		// TODO finish implementing this!!!
-	}
-
-	/**
 	 * @return the name of this survey
 	 */
 	public String getName() {
@@ -283,6 +155,166 @@ public class Survey {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * Shuffle the questions and their corresponding choices
+	 */
+	public void shuffle() {
+		for (Question q : questions) {
+			q.shuffle();
+		}
+		Collections.shuffle(questions);
+		// TODO finish implementing this!!!
+	}
+
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.name);
+		sb.append('\n'); // newline
+		sb.append(questions.size());
+		sb.append('\n'); // newline
+		for (Question q : questions)
+			sb.append(q);
+		sb.append(results.size());
+		sb.append('\n'); // newline
+		for (Result r : results)
+			sb.append(r);
+		sb.append(types.size());
+		sb.append('\n'); // newline
+		for (Type t : types)
+			sb.append(t + "\n");
+		sb.append(this.website);
+		sb.append('\n'); // newline
+		return sb.toString();
+	}
+
+	/**
+	 * Parses the survey represented by the input string according to the
+	 * specified format in the example file.
+	 * 
+	 * @param str
+	 *            the input string
+	 * @return the survey represented by the input string
+	 */
+	public static Survey parse(String str) {
+		try {
+			Survey res = new Survey();
+			Scanner in = new Scanner(str);
+			String token = null; // the next token in input
+			int num; // temporary variable storing the number of the current
+						// item
+	
+			// read the name
+			in.useDelimiter(LINE_DELIM);
+			res.name = in.next();
+	
+			// read number of questions
+			in.useDelimiter(TOKEN_DELIM);
+			num = in.nextInt();
+	
+			// read questions
+			for (int i = 0; i < num; ++i) {
+				Question cur;
+				// read question text
+				in.skip("[^\\n]*\\n"); // skip rest of line
+				in.useDelimiter(LINE_DELIM);
+				token = in.next();
+				cur = new Question(token);
+	
+				// read number of choices
+				in.useDelimiter(TOKEN_DELIM);
+				int nChoices = in.nextInt();
+	
+				// read choices
+				for (int j = 0; j < nChoices; ++j) {
+					Choice curChoice; // a variable for the current choice
+					in.skip("[^\\n]*\\n"); // skip rest of line
+					in.useDelimiter(LINE_DELIM);
+					token = in.next(); // question text
+	
+					curChoice = new Choice(token);
+	
+					in.useDelimiter(TOKEN_DELIM);
+	
+					int type; // buffer variable for reading type
+					double points; // number of points awarded to that type
+					while (in.hasNextInt()) {
+						token = in.next();
+						if (!in.hasNextDouble())
+							break;
+						type = Integer.parseInt(token);
+						points = in.nextDouble();
+						curChoice.values.add(new Choice.ValType(type, points));
+					}
+	
+					cur.choices.add(curChoice);
+				}
+				// add question to queue
+				res.questions.add(cur);
+			}
+	
+			// read number of results
+			in.useDelimiter(TOKEN_DELIM);
+			if (token == null)
+				token = in.next();
+			num = Integer.parseInt(token);
+			// read results
+			for (int i = 0; i < num; ++i) {
+				Result cur;
+				// read results text
+				in.skip("[^\\n]*\\n"); // skip rest of line
+				in.useDelimiter(LINE_DELIM);
+				token = in.next();
+				cur = new Result(token);
+	
+				// use token deliminator to read tokens instead of lines
+				in.useDelimiter(TOKEN_DELIM);
+	
+				// read results
+				// in.hasNext("[\\d]+\\s*\\n(?:[\\d\\.]+|Infinity)\\s+(?:[\\d\\.]+|Infinity)?");
+				while (in.hasNextInt()) {
+					Requirement r = new Requirement(); // a temp variable to
+														// construct
+														// requirements
+					token = in.next();
+					if (!in.hasNextDouble())
+						break;
+					r.type = Integer.parseInt(token);
+	
+					if (r.type != 0) {
+						r.min = in.nextDouble();
+						r.max = in.nextDouble();
+					} else {
+						r.target = in.nextInt();
+					}
+					cur.reqs.add(r);
+	
+				}
+				// add question to queue
+				res.results.add(cur);
+			}
+	
+			// read types
+			if (token == null)
+				token = in.next();
+			num = Integer.parseInt(token);
+			// read types
+			for (int i = 1; i <= num; ++i) {
+				in.skip("[^\\n]*\\n"); // skip rest of line
+				in.useDelimiter(LINE_DELIM);
+				token = in.next().trim();
+				Type cur = new Type(token, i);
+				res.types.add(cur);
+			}
+			in.skip("\\s*"); // skip any remaining whitespace
+			token = in.next();
+			res.website = token;
+			in.close();
+			return res;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

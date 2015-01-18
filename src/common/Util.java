@@ -9,6 +9,7 @@
  */
 package common;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
@@ -21,6 +22,8 @@ import javax.swing.JOptionPane;
  *
  */
 public class Util {
+	public static final Font QUESTION_FONT = new Font("Times New Roman", Font.PLAIN, 23);
+	public static final Font CHOICE_FONT = new Font("Times New Roman", Font.PLAIN, 20);
 	/**
 	 * Saves the contents of an input {@link JComponent} as a {@link BufferedImage}
 	 * @param src the source JComponent

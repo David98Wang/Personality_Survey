@@ -11,6 +11,8 @@ package common;
 
 import java.util.LinkedList;
 
+import javax.swing.Icon;
+
 /**
  * A data structure used to store a single choice.
  * 
@@ -67,4 +69,19 @@ public class Choice {
 		sb.append('\n');	//newline
 		return sb.toString();
 	}
+
+	/**
+	 * @return the text of this choice
+	 */
+	public String getText() {
+		return this.text;
+	}
+
+	/**
+	 * @return the values
+	 */
+	public LinkedList<ValType> getValues() {
+		return values;
+	}
+
 }
