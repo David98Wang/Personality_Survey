@@ -21,7 +21,7 @@ public class BarChart {
 	 * @param label
 	 * @return ChartPanel
 	 */
-	public static ChartPanel BarChart(double number[], String name[],
+	public static ChartPanel createBarChart(double number[], String name[],
 			String title, String domainLabel, String rangeLabel, String label) 
 	{
 		CategoryDataset dataset = createDataset(name, number, label);//create object data set for bar graph

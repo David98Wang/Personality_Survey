@@ -3,7 +3,7 @@
 
 #very first line is name of test (human readable form)
 
-Career Test 1
+Career Test
 
 #first are the questions
 

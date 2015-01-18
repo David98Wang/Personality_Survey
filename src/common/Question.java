@@ -80,5 +80,9 @@ public class Question {
 		this.choices = choices;
 	}
 	
+	@Override
+	public int hashCode() {
+		return text.hashCode() & choices.hashCode();
 		
+	}
 }

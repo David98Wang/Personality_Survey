@@ -9,6 +9,7 @@
  */
 package common;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -86,6 +87,8 @@ public class Survey {
 	}
 
 	private void initialize() {
+		if (initialized)
+			return;
 		this.shuffle();
 		Collections.sort(types);
 		Collections.sort(results);
@@ -143,9 +146,9 @@ public class Survey {
 	}
 
 	/**
-	 * @return the name of this survey
+	 * @return the title of this survey
 	 */
-	public String getName() {
+	public String getTitle() {
 		return name;
 	}
 
@@ -313,8 +316,59 @@ public class Survey {
 			in.close();
 			return res;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
 
+	/**
+	 * @return the index of the current question
+	 */
+	public int getIndex() {
+		return this.index;
+	}
+
+	/**
+	 * @return the number of questions in this survey
+	 */
+	public int getQuestionSize() {
+		return questions.size();
+	}
+
+	/**
+	 * @return the array of questions for this survey
+	 */
+	public ArrayList<Question> getQuestionArray() {
+		return this.questions;
+	}
+	
+	/**
+	 * Creates an array of results that have met the requirements for them to be displayed
+	 * @return
+	 */
+	public ArrayList<Result> getResults() {
+		initialize();
+		ArrayList<Result> res = new ArrayList<>();
+		for (Type t : types) {
+			System.out.println(t.text + ": " + t.points);
+		}
+		for (Result r : results)
+			if (r.check(types))
+				res.add(r);
+		return res;
+	}
+
+	/**
+	 * @return the types (ie. categories of results) for this survey
+	 */
+	public ArrayList<Type> getTypes() {
+		return types;
+	}
+
+	/**
+	 * @return a website for more information on this survey
+	 */
+	public String getWebsite() {
+		return website;
+	}
 }

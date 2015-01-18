@@ -72,34 +72,12 @@ You are a yellow person. #result text
 You are an orange person. #result text
 4	#result type
 0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
-2
-4 5
-8
-4 5
-16
-4 5
-19
-3 5
-24
-4 5
-31
-4 5
 
-You are an orange person. #result text
+You are an green person. #result text
 4	#result type
 0.0 Infinity	#minimum/maximum points scored (0 for no min, Infinity for positive infinity (capital I is required))
--1	#-1 indicates compare 4 is less than 5
-4 5
-8
-4 5
-16
-4 5
-19
-3 5
-24
-4 5
-31
-4 5
+-1	#-1 indicates compare 4 is less than 3
+4 3
 
 #after the results are the types (short name for the types of scores displayed on charts etc.)
 #first line is the number of types

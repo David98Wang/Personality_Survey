@@ -12,6 +12,7 @@ package gui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.swing.ButtonGroup;
@@ -38,49 +39,38 @@ public class ChoicePanel extends JPanel {
 	 * A reference to the survey this question belongs to
 	 */
 	private final Survey survey;
-	private DefaultListener listener;
-
+	private ButtonGroup btnGp;
+	private ArrayList<RadioWrapper> buttons;
 	public ChoicePanel(Survey s, Question q) {
 		question = q;
 		this.survey = s;
-		listener = new DefaultListener();
+		buttons = new ArrayList<>();
 		initialize();
 	}
 
 	private void initialize() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		ButtonGroup btnGp = new ButtonGroup();
+		btnGp = new ButtonGroup();
 		for (Choice c : question.getChoices()) {
 			RadioWrapper cur = new RadioWrapper(c);
-			cur.addActionListener(listener);
 			cur.setFont(Util.CHOICE_FONT);
+			cur.setFocusable(false);
+			cur.setToolTipText("Click the circle on the left to select this option");
 			btnGp.add(cur);
+			buttons.add(cur);
 			this.add(cur);
+			System.out.println("Added choice: " + cur);
 		}
-	}
-
-	/**
-	 * A listener that adds the poitns of the choices to a survey
-	 * 
-	 * @author Jack Li
-	 *
-	 */
-	private class DefaultListener implements ActionListener {
-		Choice selected = null;
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			RadioWrapper rw = (RadioWrapper) e.getSource();
-			selected = rw.getChoice();
-		}
-
 	}
 
 	/**
 	 * @return the selected choice for this panel
 	 */
 	public Choice getSelectedChoce() {
-		return listener.selected;
+		for (RadioWrapper r : buttons)
+			if (r.isSelected())
+				return r.getChoice();
+		return null;
 	}
 
 	/**
@@ -101,5 +91,12 @@ public class ChoicePanel extends JPanel {
 		public Choice getChoice() {
 			return c;
 		}
+	}
+
+	/**
+	 * @param choice
+	 */
+	public void select(int choice) {
+		buttons.get(choice).setSelected(true);
 	}
 }

@@ -10,7 +10,8 @@
 package common;
 
 /**
- * A data structure to store information required for the types of responses
+ * A data structure to store information required for the categories of
+ * responses. A type is simply a category of response a user can choose.
  * 
  * @author Jack Li
  *
@@ -25,7 +26,7 @@ public class Type implements Comparable<Type> {
 	 */
 	int index;
 	double points;
-	
+
 	public Type(String text, int index) {
 		this.text = text;
 		this.index = index;
@@ -38,10 +39,25 @@ public class Type implements Comparable<Type> {
 
 	/**
 	 * Sorts types according to their index
+	 * 
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
 	public int compareTo(Type o) {
 		return this.index - o.index;
+	}
+
+	/**
+	 * @return the text for this type
+	 */
+	public String getText() {
+		return this.text;
+	}
+
+	/**
+	 * @return the number of points this type has
+	 */
+	public double getPoints() {
+		return this.points;
 	}
 }

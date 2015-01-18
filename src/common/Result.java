@@ -9,6 +9,7 @@
  */
 package common;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -85,6 +86,41 @@ public class Result implements Comparable<Result>{
 		return sb.toString();
 	}
 
+	/**
+	 * Checks it this all the criteria for displaying this result is met
+	 * @return true if this result should be displayed, false otherwise
+	 */
+	public boolean check(ArrayList<Type> scores) {
+		System.out.println("Checking " + this.text + ": ");
+		for (Requirement r : reqs) {
+			double points;
+			switch(r.type) {
+			case -1:
+				//get the points for each type
+				double a = scores.get((int)r.min-1).points;
+				double b = scores.get((int)r.max-1).points;
+				if (a > b) return false;
+				System.out.println(String.format("%s:%f < %s:%f",scores.get((int)r.min-1).text,scores.get((int)r.min-1).points,scores.get((int)r.max-1).text,scores.get((int)r.max-1).points));
+				break;
+			case 0:
+				//get the points of the type that should be the maximum
+				points = scores.get(r.target-1).points;
+				for (Type s : scores) {
+					if (s.index != r.target && s.points > points)
+						return false;
+				}
+				System.out.println(String.format("%s:%f is max", scores.get(r.target-1).text,scores.get(r.target-1).points));
+				break;
+			default:
+				points = scores.get(r.type-1).points;
+				if (points < r.min || points > r.max)
+					return false;
+				System.out.println(String.format("%f < %s:%f < %f", r.min, scores.get(r.type-1).text, scores.get(r.type-1).points, r.max));
+			}
+		}
+		return true;
+	}
+	
 	@Override
 	public int compareTo(Result o) {
 		if (this.reqs.size() != o.reqs.size())
@@ -95,5 +131,12 @@ public class Result implements Comparable<Result>{
 					return this.reqs.get(i).compareTo(o.reqs.get(i));
 			}
 		return 0;
+	}
+
+	/**
+	 * @return the text of this result
+	 */
+	public String getText() {
+		return this.text;
 	}
 }

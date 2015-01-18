@@ -14,7 +14,7 @@ public class BarTest extends JFrame{
 	public static double[] y=new double[10];
 	public BarTest()
 	{
-        ChartPanel p =  BarChart.BarChart( y, x,"a","b","c","d");
+        ChartPanel p =  BarChart.createBarChart( y, x,"a","b","c","asdfasdfaaf");
         
         p.setPreferredSize(new java.awt.Dimension(500, 270));
         p.setVisible(true);
