@@ -8,7 +8,7 @@ A book with lots of pictures in it
 1 1
 A book with lots of words in it
 2 1
-A book with word sesarches or crossword puzzles
+A book with word searches or crossword puzzles
 3 1
 When you are not sure how to spell a word, what are you most likely to do?
 3
@@ -26,7 +26,7 @@ Talk to the person next to you in line
 2 1
 Fidget or move back and forth
 3 1
-When you see the wrd "cat", what do you do first?
+When you see the word "cat", what do you do first?
 3
 Picture a cat in your mind
 1 1
@@ -72,7 +72,7 @@ Put on your "mad" face
 1 1
 Yell and scream
 2 1
-Slame doors
+Slam doors
 3 1
 When you are happy, what are you most likely to do?
 3
@@ -146,7 +146,7 @@ A concert
 2 1
 An amusement park
 3 1
-What are you most likely to remeber about new people you meet?
+What are you most likely to remember about new people you meet?
 3
 Their face bot not their name
 1 1
@@ -181,7 +181,7 @@ You are a kinesthetic learner.
 
 3
 Visual
-Audiotry
+Auditory
 Kinesthetic
 
 http://blc.uc.iupui.edu/academic-enrichment/study-skills/learning-styles/3-learning-styles
