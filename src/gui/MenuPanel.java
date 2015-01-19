@@ -58,7 +58,7 @@ public class MenuPanel extends JPanel {
 	private void initialize() {
 		setLayout(new BorderLayout(0, 0));
 		
-		lblTitle = new JLabel("Who Are You, Really?");
+		lblTitle = new JLabel("Who Are You Really?");
 		lblTitle.setBorder(new EmptyBorder(100, 10, 10, 10));
 		lblTitle.setFont(new Font("Tekton Pro Ext", Font.PLAIN, 41));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);

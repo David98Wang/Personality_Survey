@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		this.components = new Stack<>();
 		this.addContent(new MenuPanel(this));
-		this.setTitle("Who Are You, Really?");
+		this.setTitle("Who Are You Really?");
 		this.setSize(800, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
