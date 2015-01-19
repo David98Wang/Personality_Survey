@@ -509,11 +509,7 @@ Absolutely no
 #the program will choose the result that can be satisfied with the largest minimum
 # for example, if the person has a score of 3 for type 1, the second result will be chosen
 
-78	#number of results***
-
-You choose more blue than red.	#result text
-0	#0 for special type of result, indicating the maximum is choosen
-1	#result is displayed if type 1 is the maximum
+77	#number of results***
 
 Accountant 
 4

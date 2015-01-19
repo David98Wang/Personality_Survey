@@ -14,17 +14,21 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -48,7 +52,17 @@ import common.Util;
  * @author Jack Li
  *
  */
-public class ResultPanel extends JPanel {
+public class ResultPanel extends JPanel {	
+	/**
+	 * Maximum entries displayed in the pie chart
+	 */
+	private static final int  MAX_CHART_ELEMENTS = 7;
+
+/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(ResultPanel.class.getName());
+
 	/**
 	 * The results to be displayed
 	 */
@@ -84,21 +98,44 @@ public class ResultPanel extends JPanel {
 		this.setSize(getPreferredSize());
 
 		//grab data from survey
-		ArrayList<Type> types = survey.getTypes();
-		String[] names = new String[types.size()];
-		double[] nums = new double[types.size()];
-		for (int i = 0; i < names.length; ++i) {
-			names[i] = types.get(i).getText();
-			nums[i] = types.get(i).getPoints();
+		ArrayList<Type> types = new ArrayList<>(survey.getTypes());
+		Collections.sort(types, new Comparator<Type>() {
+
+			@Override
+			public int compare(Type a, Type b) {
+				return (int) (b.getPoints() - a.getPoints());
+			}
+			
+		});;
+		int chartSize = Math.min(types.size(), MAX_CHART_ELEMENTS+1);
+		String[] names = new String[chartSize];
+		double[] nums = new double[chartSize];
+		if (types.size() > chartSize) {
+			for (int i = 0; i < MAX_CHART_ELEMENTS; ++i) {
+				names[i] = types.get(i).getText();
+				nums[i] = types.get(i).getPoints();
+			}
+			//create a seperate category for the other things
+			names[chartSize - 1] = "Other";
+			nums[chartSize - 1] = 0;
+			for (int i = chartSize - 1; i < types.size(); ++i)
+				nums[chartSize - 1] += types.get(i).getPoints();
+		} else {
+			for (int i = 0; i < names.length; ++i) {
+				names[i] = types.get(i).getText();
+				nums[i] = types.get(i).getPoints();
+			}
 		}
 		
 		//create charts
 		pieChart = PieChart.createPieChart(survey.getTitle(), "Results", names, nums);
 		pieChart.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED ));
 		JScrollPane pieScrollPane = new JScrollPane(pieChart);
+		pieScrollPane.setToolTipText("Right click for more options");
 		barChart = BarChart.createBarChart(nums, names, survey.getTitle(), "Categories", "Points", "Chart");
 		barChart.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED ));
 		JScrollPane barScrollPane = new JScrollPane(barChart);
+		barScrollPane.setToolTipText("Right click for more options");
 		setBorder(new EmptyBorder(20, 20, 20, 20));
 		StringBuilder resultBuilder = new StringBuilder();
 		resultBuilder.append("Results: \n");
@@ -118,6 +155,7 @@ public class ResultPanel extends JPanel {
 		
 		//create text area to display result text
 		JTextArea textArea = new JTextArea();
+		textArea.setToolTipText("This is the result of the survey based on your decisions");
 		textArea.setFont(new Font("Baskerville Old Face", Font.PLAIN, 20));
 		textArea.setEditable(false);
 		textArea.setWrapStyleWord(true);
@@ -126,6 +164,9 @@ public class ResultPanel extends JPanel {
 		textArea.setText(resultBuilder.toString());
 		textArea.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED ));
 		JScrollPane textScroll = new JScrollPane(textArea);
+		textScroll.setToolTipText("This is the result of the survey based on your decisions");
+		//scroll to top left corner
+		textScroll.scrollRectToVisible(new Rectangle(0,0,1,1));
 		textPanel.add(textScroll);
 		
 		//create spacing component
@@ -142,13 +183,17 @@ public class ResultPanel extends JPanel {
 		for (int i = 0; i < types.size(); ++i) {
 			Type curType = types.get(i);
 			tableData[i ][0] = curType.getText();
-			tableData[i ][1] = curType.getPoints();
+			tableData[i ][1] = String.format("%.2f",curType.getPoints());
 			tableData[i ][2] = String.format("%05.2f%%", curType.getPoints() / totalPoints * 100);
 		}
 		table = new JTable(tableData, columnNames);
+		table.setFont(new Font("Baskerville Old Face", Font.PLAIN, 17));
+		table.setToolTipText("This is the detailed breakdown of the points you scored in the different categories of this survey");
+		table.setRowHeight((int)(table.getFontMetrics(table.getFont()).getHeight()*1.602));
 		table.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED ));
 		table.setEnabled(false);
 		JScrollPane tabelScrollPane = new JScrollPane(table);
+		tabelScrollPane.setToolTipText("This is the detailed breakdown of the points you scored in the different categories of this survey");
 		textPanel.add(tabelScrollPane);
 		
 		//create spacing component
@@ -171,6 +216,7 @@ public class ResultPanel extends JPanel {
 		add(buttonPanel, BorderLayout.SOUTH);
 
 		JButton btnSave = new JButton("Save");
+		btnSave.setToolTipText("Click to save the results into a webpage");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//print html page
@@ -226,26 +272,28 @@ public class ResultPanel extends JPanel {
 				fout.println("</body>");
 				if (fout != null)
 					fout.close();
-				System.out.println("Written to " + file.getAbsolutePath());
+				logger.log(Level.INFO,"Written to " + file.getAbsolutePath());
 				Util.open(file);
 			}
 		});
 		buttonPanel.add(btnSave);
 
 		JButton btnBackToMenu = new JButton("Back to Menu");
+		btnBackToMenu.setToolTipText("Click to go back to the menu");
 		btnBackToMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				parent.removeContent(ResultPanel.this);
 				parent.invalidate();
 				parent.validate();
 				parent.setResizable(true);
-				System.out.println("Removed");
+				logger.log(Level.INFO,"Removed");
 				ResultPanel.this.dispose();
 			}
 		});
 		buttonPanel.add(btnBackToMenu);
 
 		JButton btnMoreInfo = new JButton("More Info");
+		btnMoreInfo.setToolTipText("Click to open a link in the browser for more information");
 		btnMoreInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String website = survey.getWebsite();

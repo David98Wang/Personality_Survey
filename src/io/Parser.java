@@ -12,9 +12,10 @@ package io;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import common.Survey;
 import common.Util;
@@ -25,7 +26,12 @@ import common.Util;
  * @author Jack Li
  *
  */
-public class Parser {
+public class Parser {	
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(Parser.class.getName());
+
 	public static final FileFilter fileFilter = new FileFilter() {
 		/** 
 		 * A file filter for txt files
@@ -84,7 +90,7 @@ public class Parser {
 			throw new IOException("Error reading files from " + dir.getAbsolutePath());
 		Survey[] surveys = new Survey[files.length];
 		for (int i = 0; i < files.length; ++i) {
-			System.out.println("Reading " + files[i].getAbsolutePath());
+			logger.log(Level.INFO,"Reading " + files[i].getAbsolutePath());
 			try {
 			surveys[i] = readSurvey(files[i]);
 			} catch(Exception e) {

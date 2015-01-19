@@ -9,28 +9,31 @@
  */
 package gui;
 
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import common.Choice;
 import common.Question;
+import common.Result;
 import common.Survey;
 import common.Util;
-
-import javax.swing.BoxLayout;
 
 /**
  * @author Jack Li
  *
  */
 public class ChoicePanel extends JPanel {
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(ChoicePanel.class.getName());
+
 	/**
 	 * A reference to the question to be displayed
 	 */
@@ -55,11 +58,11 @@ public class ChoicePanel extends JPanel {
 			RadioWrapper cur = new RadioWrapper(c);
 			cur.setFont(Util.CHOICE_FONT);
 			cur.setFocusable(false);
-			cur.setToolTipText("Click the circle on the left to select this option");
+			cur.setToolTipText("Click the to select this option");
 			btnGp.add(cur);
 			buttons.add(cur);
 			this.add(cur);
-			System.out.println("Added choice: " + cur);
+			logger.log(Level.INFO,"Added choice: " + cur);
 		}
 	}
 

@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
@@ -34,6 +36,10 @@ import javax.swing.filechooser.FileFilter;
  *
  */
 public class Util {
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(Util.class.getName());
 	/**
 	 * Font for questions
 	 */
@@ -87,10 +93,10 @@ public class Util {
 		chooser.setFileFilter(f);
 		chooser.setVisible(true);
 		if (chooser.showDialog(null, btnText) == JFileChooser.APPROVE_OPTION) {
-			System.out.println("Got	" + chooser.getSelectedFile().getAbsolutePath());
+			logger.log(Level.INFO,"Got	" + chooser.getSelectedFile().getAbsolutePath());
 			return chooser.getSelectedFile();
 		}
-		System.out.println("Error");
+		logger.log(Level.INFO,"Error");
 		return null;
 	}
 	

@@ -11,6 +11,8 @@ package common;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * A data structure representing the result of the survey
@@ -18,6 +20,10 @@ import java.util.LinkedList;
  *
  */
 public class Result implements Comparable<Result>{
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(Result.class.getName());
 	/**
 	 * Text to display for this result
 	 */
@@ -91,7 +97,7 @@ public class Result implements Comparable<Result>{
 	 * @return true if this result should be displayed, false otherwise
 	 */
 	public boolean check(ArrayList<Type> scores) {
-		System.out.println("Checking " + this.text + ": ");
+		logger.log(Level.INFO,"Checking " + this.text + ": ");
 		for (Requirement r : reqs) {
 			double points;
 			switch(r.type) {
@@ -100,7 +106,7 @@ public class Result implements Comparable<Result>{
 				double a = scores.get((int)r.min-1).points;
 				double b = scores.get((int)r.max-1).points;
 				if (a > b) return false;
-				System.out.println(String.format("%s:%f < %s:%f",scores.get((int)r.min-1).text,scores.get((int)r.min-1).points,scores.get((int)r.max-1).text,scores.get((int)r.max-1).points));
+				logger.log(Level.INFO,String.format("%s:%f < %s:%f",scores.get((int)r.min-1).text,scores.get((int)r.min-1).points,scores.get((int)r.max-1).text,scores.get((int)r.max-1).points));
 				break;
 			case 0:
 				//get the points of the type that should be the maximum
@@ -109,13 +115,13 @@ public class Result implements Comparable<Result>{
 					if (s.index != r.target && s.points > points)
 						return false;
 				}
-				System.out.println(String.format("%s:%f is max", scores.get(r.target-1).text,scores.get(r.target-1).points));
+				logger.log(Level.INFO,String.format("%s:%f is max", scores.get(r.target-1).text,scores.get(r.target-1).points));
 				break;
 			default:
 				points = scores.get(r.type-1).points;
 				if (points < r.min || points > r.max)
 					return false;
-				System.out.println(String.format("%f < %s:%f < %f", r.min, scores.get(r.type-1).text, scores.get(r.type-1).points, r.max));
+				logger.log(Level.INFO,String.format("%f < %s:%f < %f", r.min, scores.get(r.type-1).text, scores.get(r.type-1).points, r.max));
 			}
 		}
 		return true;

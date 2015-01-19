@@ -9,7 +9,6 @@
  */
 package gui;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,16 +17,18 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
+
 import common.Question;
+import common.Result;
 import common.Survey;
 import common.Util;
 
@@ -38,6 +39,10 @@ import common.Util;
  *
  */
 public class SurveyPanel extends JPanel implements KeyListener {
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(SurveyPanel.class.getName());
 
 	/**
 	 * The parent frame
@@ -57,8 +62,6 @@ public class SurveyPanel extends JPanel implements KeyListener {
 	private JButton btnPrevious;
 	private JButton btnSubmitAnswers;
 	private JButton btnBackToMenu;
-	private Component horizontalStrut;
-	private JSeparator separator;
 
 	/**
 	 * Creates a panel for a given survey
@@ -93,30 +96,27 @@ public class SurveyPanel extends JPanel implements KeyListener {
 		textArea.setEditable(false);
 		textArea.setBackground(getBackground());
 		textArea.addKeyListener(this);
-		;
 		add(textArea, "cell 0 1 7 2,width 60%");
 
-		horizontalStrut = Box.createHorizontalStrut(200);
-		add(horizontalStrut, "flowx,cell 0 7 13 3,grow");
-
 		btnNext = new JButton("Next");
+		btnNext.setToolTipText("Go to the next question");
 		btnNext.addKeyListener(this);
 		add(btnNext, "flowy,cell 11 12,growx");
 
 		btnPrevious = new JButton("Previous");
+		btnPrevious.setToolTipText("Go to the previous question");
 		btnPrevious.addKeyListener(this);
 		add(btnPrevious, "cell 11 12,growx");
 
 		btnSubmitAnswers = new JButton("Submit Answers");
+		btnSubmitAnswers.setToolTipText("Submit your answers");
 		btnSubmitAnswers.addKeyListener(this);
 		add(btnSubmitAnswers, "cell 11 12");
 
 		btnBackToMenu = new JButton("Back to Menu");
+		btnBackToMenu.setToolTipText("Go back to the menu");
 		btnBackToMenu.addKeyListener(this);
 		add(btnBackToMenu, "cell 11 12,growx");
-
-		separator = new JSeparator();
-		add(separator, "cell 11 9");
 		setContent(survey.getQuestion());
 
 		addActions();
@@ -138,29 +138,29 @@ public class SurveyPanel extends JPanel implements KeyListener {
 		});
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cur.setContent(survey.getNextQuestion());
+				Question q = survey.getNextQuestion();
+				if (q != null)
+					cur.setContent(q);
+				else
+					Util.showError("Already at the last question!");
 			}
 		});
 		btnPrevious.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cur.setContent(survey.getPrevQuestion());
+				Question q = survey.getPrevQuestion();
+				if (q != null)
+					cur.setContent(q);
+				else
+					Util.showError("Already at the first question!");
 			}
 		});
 		btnSubmitAnswers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<Question> questions = survey.getQuestionArray(); // get
-																			// the
-																			// questions
-																			// of
-																			// this
-																			// survey
-				LinkedList<Integer> missedQuestions = new LinkedList<>(); // a
-																			// list
-																			// to
-																			// store
-																			// the
-																			// missed
-																			// questions
+				//get the questions of this survey
+				ArrayList<Question> questions = survey.getQuestionArray();
+				//a list to store any questions the user did not answer
+				LinkedList<Integer> missedQuestions = new LinkedList<>();
+				//get the choices
 				for (int i = 0; i < questions.size(); ++i) {
 					ChoicePanel c = SurveyPanel.this.questions.get(questions.get(i));
 					if (c == null) {
@@ -171,8 +171,9 @@ public class SurveyPanel extends JPanel implements KeyListener {
 						missedQuestions.add(i + 1);
 					}
 				}
+				//check if the user missed any
 				if (!missedQuestions.isEmpty()) {
-					Util.showError("You have missed questions:\n " + missedQuestions);
+					Util.showError("You have missed question(s):\n " + missedQuestions);
 					return;
 				}
 				for (int i = 0; i < questions.size(); ++i) {
@@ -181,6 +182,7 @@ public class SurveyPanel extends JPanel implements KeyListener {
 				}
 				ResultPanel panel = new ResultPanel(parent, survey);
 				parent.addContent(panel);
+				parent.removeKeyListener(cur);
 				parent.removeContent(cur);
 				cur.dispose();
 			}
@@ -196,14 +198,14 @@ public class SurveyPanel extends JPanel implements KeyListener {
 			// remove previously displayed choice
 			this.remove(questions.get(displayedQuestion));
 			questions.get(displayedQuestion).setVisible(false);
-			System.out.println("Removed panel " + questions.get(displayedQuestion));
+			logger.log(Level.INFO,"Removed panel " + questions.get(displayedQuestion));
 		}
 		ChoicePanel curPanel = questions.get(q); // retrieve the choice panel
 													// from the map
 		// check if the panel exists in the map
 		if (curPanel == null) {
 			curPanel = new ChoicePanel(survey, q);
-			questions.putIfAbsent(q, curPanel);
+			questions.put(q, curPanel);
 		}
 		add(curPanel, "cell 0 4 7 5");
 		curPanel.setVisible(true);
@@ -255,6 +257,6 @@ public class SurveyPanel extends JPanel implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
+
 	}
 }

@@ -11,9 +11,13 @@ package gui;
 
 import java.awt.Dimension;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+
+import common.Result;
 
 /**
  * The main container for the menu, survey, and result
@@ -22,6 +26,10 @@ import javax.swing.JFrame;
  *
  */
 public class MainFrame extends JFrame {
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(MainFrame.class.getName());
 
 	/**
 	 * A list of components that has been added to this frame
@@ -60,7 +68,7 @@ public class MainFrame extends JFrame {
 		this.setMinimumSize(temp);
 		this.setSize(temp);
 		this.validate();
-		System.out.println("Added " + content);
+		logger.log(Level.INFO,"Added " + content);
 	}
 
 	/**
@@ -75,9 +83,9 @@ public class MainFrame extends JFrame {
 			components.peek().setVisible(true);
 			this.setMinimumSize(components.peek().getSize());
 			this.setSize(getMinimumSize());
-			System.out.println("Under: "+components.peek());
+			logger.log(Level.INFO,"Under: "+components.peek());
 		}
 		this.validate();
-		System.out.println("Removed " + content);
+		logger.log(Level.INFO,"Removed " + content);
 	}
 }

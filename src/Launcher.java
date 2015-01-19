@@ -1,7 +1,13 @@
+import gui.MainFrame;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import gui.MainFrame;
+import common.Result;
 
 /**
  * File: Launcher.java
@@ -19,6 +25,10 @@ import gui.MainFrame;
  *
  */
 public class Launcher {
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(Launcher.class.getName());
 
 	public static void main(String[] args) {
 		if (System.getProperty("os.name").toLowerCase().contains("windows"))
@@ -26,8 +36,10 @@ public class Launcher {
 
 				UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-				System.out.println("You are not using windows, reverting to default look and feel");
+				logger.log(Level.INFO,"You are not using windows, reverting to default look and feel");
 			}
+		
+		ToolTipManager.sharedInstance().setInitialDelay(500);
 		new MainFrame().setVisible(true);
 	}
 

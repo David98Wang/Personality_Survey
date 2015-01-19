@@ -9,11 +9,12 @@
  */
 package common;
 
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import common.Choice.ValType;
@@ -30,6 +31,10 @@ import common.Result.Requirement;
  *
  */
 public class Survey {
+	/**
+	 * A logger object to log any messages this classes has
+	 */
+	private static Logger logger = Logger.getLogger(Survey.class.getName());
 	/**
 	 * Delimiter used to read one token (a word, number, etc) at a time while
 	 * skipping comments for the scanner
@@ -350,7 +355,7 @@ public class Survey {
 		initialize();
 		ArrayList<Result> res = new ArrayList<>();
 		for (Type t : types) {
-			System.out.println(t.text + ": " + t.points);
+			logger.log(Level.INFO,t.text + ": " + t.points);
 		}
 		for (Result r : results)
 			if (r.check(types))
