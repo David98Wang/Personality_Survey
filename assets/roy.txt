@@ -1,6 +1,5 @@
 #Roy
 Myers Briggs Test
-#questions
 48
 
 #Extrovert t1 Introvert t2
@@ -9,9 +8,9 @@ Myers Briggs Test
 Are you considered as a talkitive and outgoing person?
 2
 yes
-1 1
+1 1.01
 no
-2 1
+2 1.01
 
 #2
 Do you enjoy a fast paced environment?
@@ -124,9 +123,9 @@ strongly disagree
 Do you focus on the reality of how things really are?
 2
 yes
-3 1
+3 1.01
 no
-4 1 
+4 1.01
 
 #14
 Do you often pay attention to concrete facts and details?
@@ -239,9 +238,9 @@ strongly disagree
 Do you make decisions in an impersonal way using logical reasoning?
 2
 yes
-5 1
+5 1.01
 no
-6 1 
+6 1.01
 
 #26
 Do you value justice and fairness?
@@ -353,9 +352,9 @@ strongly disagree
 Do you prefer to have matters settled rather than leaving things open?
 2
 yes
-7 1
+7 1.01
 no
-8 1 
+8 1.01
 
 #38
 Do you think about rules and deadlines should be respected? Do you prefer to have matters settled?
@@ -505,4 +504,4 @@ Feeling
 Percieving 
 Judging
 
-http://en.wikipedia.org/wiki/Myers-Briggs_Type_Indicator
+http://www.16personalities.com/personality-types
