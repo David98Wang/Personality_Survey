@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -159,6 +161,13 @@ public class MenuPanel extends JPanel {
 		});
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					Util.openWebpage(new URL("http://qhadron.github.io/Personality_Survey/"));
+				} catch (MalformedURLException e1) {
+					//dirty hack that works on windows
+					Util.open(new File("http://qhadron.github.io/Personality_Survey/"));
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnExit.addActionListener(new ActionListener() {
