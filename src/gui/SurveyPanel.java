@@ -229,30 +229,32 @@ public class SurveyPanel extends JPanel implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() > KeyEvent.VK_0 && e.getKeyCode() < KeyEvent.VK_9) {
-			int choice = e.getKeyCode() - KeyEvent.VK_0;
+		if (e.getKeyChar() > KeyEvent.VK_0 && e.getKeyChar() < KeyEvent.VK_9) {
+			int choice = e.getKeyChar() - KeyEvent.VK_0;
 			if (choice == 0)
 				choice += 10;
 			if (choice <= displayedQuestion.getChoices().size()) {
 				questions.get(displayedQuestion).select(choice - 1);
 			}
-		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		} else if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+			btnSubmitAnswers.doClick();
+		}
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			btnNext.doClick();
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			btnPrevious.doClick();
 		} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			btnSubmitAnswers.doClick();
 		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
 	}
 }

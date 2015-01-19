@@ -136,7 +136,7 @@ public class MenuPanel extends JPanel {
 						return;
 					parent.addContent(new SurveyPanel(parent, selected.survey));
 				} catch (IOException ex) {
-					Util.showError("Could not read the surveys. Make sure there are surveys in the assets folder of this program.");
+					Util.showError("Could not read the surveys. Make sure there are surveys in the " + new File("./assets").getAbsolutePath() + " folder (in the same folder as this program.");
 					ex.printStackTrace();
 				}
 			}
