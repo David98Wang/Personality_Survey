@@ -51,9 +51,13 @@ public class ChoicePanel extends JPanel {
 		initialize();
 	}
 
+	/**
+	 * Initializes the gui
+	 */
 	private void initialize() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		btnGp = new ButtonGroup();
+		//populate this panel
 		for (Choice c : question.getChoices()) {
 			RadioWrapper cur = new RadioWrapper(c);
 			cur.setFont(Util.CHOICE_FONT);
@@ -62,7 +66,7 @@ public class ChoicePanel extends JPanel {
 			btnGp.add(cur);
 			buttons.add(cur);
 			this.add(cur);
-			logger.log(Level.INFO,"Added choice: " + cur);
+			logger.log(Level.FINEST,"Added choice: " + cur);
 		}
 	}
 
@@ -97,7 +101,7 @@ public class ChoicePanel extends JPanel {
 	}
 
 	/**
-	 * @param choice
+	 * @param choice the choice to select for this panel
 	 */
 	public void select(int choice) {
 		buttons.get(choice).setSelected(true);

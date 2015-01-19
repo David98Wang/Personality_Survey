@@ -10,6 +10,7 @@
 package gui;
 
 import java.awt.Dimension;
+import java.awt.RenderingHints.Key;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -26,7 +27,6 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
-
 import common.Question;
 import common.Result;
 import common.Survey;
@@ -82,12 +82,20 @@ public class SurveyPanel extends JPanel implements KeyListener {
 		this.setVisible(true);
 	}
 
+	/**
+	 * Initialize GUI
+	 */
 	private void initialize() {
+		//set window information
 		this.setSize(800, 600);
 		this.setMinimumSize(new Dimension(600, 400));
 		this.setBorder(new EmptyBorder(20, 20, 20, 20));
+		
+		//set layout
 		setLayout(new MigLayout("", "[][grow][][::500px,fill][][][][][grow][][][][]",
 				"[][][26.00][][][73.00][][-19.00][][181.00,grow,baseline][center][center][grow,center][grow,baseline]"));
+		
+		//set text area
 		textArea = new JTextArea();
 		textArea.setFont(Util.QUESTION_FONT);
 		textArea.setWrapStyleWord(true);
@@ -98,6 +106,7 @@ public class SurveyPanel extends JPanel implements KeyListener {
 		textArea.addKeyListener(this);
 		add(textArea, "cell 0 1 7 2,width 60%");
 
+		//set buttons
 		btnNext = new JButton("Next");
 		btnNext.setToolTipText("Go to the next question");
 		btnNext.addKeyListener(this);
@@ -132,6 +141,8 @@ public class SurveyPanel extends JPanel implements KeyListener {
 		final SurveyPanel cur = this;
 		btnBackToMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (!Util.showConfirm("Are you sure you want to go back? All changes will be discarded."))
+					return;
 				parent.removeContent(cur);
 				dispose();
 			}
@@ -198,7 +209,7 @@ public class SurveyPanel extends JPanel implements KeyListener {
 			// remove previously displayed choice
 			this.remove(questions.get(displayedQuestion));
 			questions.get(displayedQuestion).setVisible(false);
-			logger.log(Level.INFO,"Removed panel " + questions.get(displayedQuestion));
+			logger.log(Level.FINEST,"Removed panel " + questions.get(displayedQuestion));
 		}
 		ChoicePanel curPanel = questions.get(q); // retrieve the choice panel
 													// from the map
@@ -252,6 +263,8 @@ public class SurveyPanel extends JPanel implements KeyListener {
 			btnPrevious.doClick();
 		} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			btnSubmitAnswers.doClick();
+		} else if (e.getKeyChar() == KeyEvent.VK_ESCAPE) {
+			btnBackToMenu.doClick();
 		}
 	}
 

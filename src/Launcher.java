@@ -1,6 +1,8 @@
 import gui.MainFrame;
 
+import java.util.logging.Filter;
 import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import javax.swing.ToolTipManager;
@@ -30,7 +32,12 @@ public class Launcher {
 	 */
 	private static Logger logger = Logger.getLogger(Launcher.class.getName());
 
+	/**
+	 * The entry point for the entire program
+	 * @param args system arguments
+	 */
 	public static void main(String[] args) {
+		//set the look and feel to be windows if on a windows computer
 		if (System.getProperty("os.name").toLowerCase().contains("windows"))
 			try {
 
@@ -38,7 +45,8 @@ public class Launcher {
 			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 				logger.log(Level.INFO,"You are not using windows, reverting to default look and feel");
 			}
-		
+		Logger.getGlobal().setLevel(Level.INFO);
+		//set properties for tool-tips (used as in program help)
 		ToolTipManager.sharedInstance().setInitialDelay(500);
 		new MainFrame().setVisible(true);
 	}

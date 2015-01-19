@@ -68,7 +68,7 @@ public class MainFrame extends JFrame {
 		this.setMinimumSize(temp);
 		this.setSize(temp);
 		this.validate();
-		logger.log(Level.INFO,"Added " + content);
+		logger.log(Level.FINEST,"Added " + content);
 	}
 
 	/**
@@ -83,9 +83,9 @@ public class MainFrame extends JFrame {
 			components.peek().setVisible(true);
 			this.setMinimumSize(components.peek().getSize());
 			this.setSize(getMinimumSize());
-			logger.log(Level.INFO,"Under: "+components.peek());
+			logger.log(Level.FINEST,"Under: "+components.peek());
 		}
 		this.validate();
-		logger.log(Level.INFO,"Removed " + content);
+		logger.log(Level.FINEST,"Removed " + content);
 	}
 }

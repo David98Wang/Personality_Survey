@@ -57,7 +57,7 @@ public class MenuPanel extends JPanel {
 
 	private void initialize() {
 		setLayout(new BorderLayout(0, 0));
-
+		
 		lblTitle = new JLabel("Who Are You, Really?");
 		lblTitle.setBorder(new EmptyBorder(100, 10, 10, 10));
 		lblTitle.setFont(new Font("Tekton Pro Ext", Font.PLAIN, 41));
@@ -127,6 +127,7 @@ public class MenuPanel extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
+					//read all surveys and wrap them so they can be used with JOptionPane
 					Survey[] surveys = io.Parser.readAll(new File("./assets"));
 					SurveyWrapper[] wrapped = new SurveyWrapper[surveys.length];
 					for (int i = 0; i < surveys.length; ++i) {
@@ -146,6 +147,7 @@ public class MenuPanel extends JPanel {
 
 		btnLoad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//load the files
 				File f = Util.chooseFile("Load", Util.TXT_FILTER);
 				if (f != null)
 					try {
@@ -171,6 +173,7 @@ public class MenuPanel extends JPanel {
 			}
 		});
 		btnExit.addActionListener(new ActionListener() {
+			//ask for confirmation before exiting
 			public void actionPerformed(ActionEvent e) {
 				if (Util.showConfirm("Are you sure you want to exit?"))
 					System.exit(0);

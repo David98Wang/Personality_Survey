@@ -8,7 +8,7 @@
  * Created by: Jack Li
  */
 /**
- * This package contains test classes for components of the project
+ * This package contains test classes for different components of the project
  * @author Jack Li
  *
  */
