@@ -1,4 +1,4 @@
-EMOTIONAL INTELLIGENCE TEST
+Emotional Intelligence Test
 
 20
 
@@ -226,23 +226,23 @@ collaborate with your boss and other employees about that to do
 
 You have a low EI and is emotionless
 1
-0.0 19.0
+19.0 35.0
 
 You have a lower than average EI and are somewhat emotionless
 1
-20.0 39.0
+35.0 55.0
 
 You have an average EI and don't have full control on your emotions
 1
-40.0 59.0
+55.0 75.0
 
 You have a higher than average EI and have quite a bit of control and know how to use your IT 
 1
-60.0 80.0
+75.0 90.0
 
 You have a high EI and every good control on your emotion and have a high chance to be successful in your life
 1
-81.0 100.0
+90.0 100.0
 
 1
 you have an Emotional intelligence

@@ -94,7 +94,7 @@ public class Parser {
 			try {
 			surveys[i] = readSurvey(files[i]);
 			} catch(Exception e) {
-				System.err.println("Error occurred while reading the maze@" + files[i].getAbsolutePath() + ":");
+				logger.log(Level.SEVERE,"Error occurred while reading the maze@" + files[i].getAbsolutePath() + ":");
 				e.printStackTrace();
 			}
 		}
