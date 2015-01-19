@@ -138,6 +138,7 @@ public class ResultPanel extends JPanel {
 		barScrollPane.setToolTipText("Right click for more options");
 		setBorder(new EmptyBorder(20, 20, 20, 20));
 		StringBuilder resultBuilder = new StringBuilder();
+		Collections.shuffle(results);	//shuffle results
 		resultBuilder.append("Results: \n");
 		for (int i = 0; i < results.size(); ++i) {
 			resultBuilder.append(String.format("%d: ", i+1) + results.get(i).getText() + "\n");

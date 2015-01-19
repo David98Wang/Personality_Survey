@@ -43,7 +43,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		this.components = new Stack<>();
 		this.addContent(new MenuPanel(this));
-		this.setTitle("Survey");
+		this.setTitle("Who Are You, Really?");
 		this.setSize(800, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
@@ -67,6 +67,7 @@ public class MainFrame extends JFrame {
 		temp.height += 16;
 		this.setMinimumSize(temp);
 		this.setSize(temp);
+		this.setLocationRelativeTo(null); //re-center component on screen
 		this.validate();
 		logger.log(Level.FINEST,"Added " + content);
 	}
@@ -83,6 +84,7 @@ public class MainFrame extends JFrame {
 			components.peek().setVisible(true);
 			this.setMinimumSize(components.peek().getSize());
 			this.setSize(getMinimumSize());
+			this.setLocationRelativeTo(null); //re-center component on screen
 			logger.log(Level.FINEST,"Under: "+components.peek());
 		}
 		this.validate();
