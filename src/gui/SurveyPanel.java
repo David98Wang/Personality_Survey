@@ -152,8 +152,42 @@ public class SurveyPanel extends JPanel implements KeyListener {
 				Question q = survey.getNextQuestion();
 				if (q != null)
 					cur.setContent(q);
-				else
-					Util.showError("Already at the last question!");
+				else{
+					boolean confirmSubmit = Util.showConfirm("This is the last question, do you wish to submit?");
+					if(confirmSubmit){
+					//get the questions of this survey
+					ArrayList<Question> questions = survey.getQuestionArray();
+					//a list to store any questions the user did not answer
+					LinkedList<Integer> missedQuestions = new LinkedList<>();
+					//get the choices
+					for (int i = 0; i < questions.size(); ++i) {
+						ChoicePanel c = SurveyPanel.this.questions.get(questions.get(i));
+						if (c == null) {
+							missedQuestions.add(i + 1);
+							continue;
+						}
+						if (c.getSelectedChoce() == null) {
+							missedQuestions.add(i + 1);
+						}
+					}
+					//check if the user missed any
+					if (!missedQuestions.isEmpty()) {
+						Util.showError("You have missed question(s):\n " + missedQuestions);
+						Question q1 = survey.getToQuestion(missedQuestions.getFirst()-1);
+						cur.setContent(q1);
+						return;
+					}
+					for (int i = 0; i < questions.size(); ++i) {
+						ChoicePanel c = SurveyPanel.this.questions.get(questions.get(i));
+						survey.choose(c.getSelectedChoce());
+					}
+					ResultPanel panel = new ResultPanel(parent, survey);
+					parent.addContent(panel);
+					parent.removeKeyListener(cur);
+					parent.removeContent(cur);
+					cur.dispose();
+					}
+				}
 			}
 		});
 		btnPrevious.addActionListener(new ActionListener() {
@@ -185,6 +219,8 @@ public class SurveyPanel extends JPanel implements KeyListener {
 				//check if the user missed any
 				if (!missedQuestions.isEmpty()) {
 					Util.showError("You have missed question(s):\n " + missedQuestions);
+					Question q1 = survey.getToQuestion(missedQuestions.getFirst()-1);
+					cur.setContent(q1);
 					return;
 				}
 				for (int i = 0; i < questions.size(); ++i) {

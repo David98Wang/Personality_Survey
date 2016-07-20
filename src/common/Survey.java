@@ -23,13 +23,10 @@ import common.Result.Requirement;
 /**
  * A overall class storing everything needed for 1 survey.
  * 
- * @author Jack Li
+ * @author Jack Li, David Wang
  * 
  */
-/**
- * @author Jack Li
- *
- */
+
 public class Survey {
 	/**
 	 * A logger object to log any messages this classes has
@@ -111,7 +108,19 @@ public class Survey {
 			types.get(v.type-1).points+=v.value;
 		}
 	}
-	
+	/**
+	 * Gets the question by index
+	 * @param Index of the question
+	 * @return the destination question in the survey
+	 */
+	public Question getToQuestion(int destIndex){
+		if(destIndex < 0 || destIndex >= questions.size()){
+			return null;
+		} else {
+			index = destIndex;
+			return questions.get(index);
+		}
+	}
 
 	/**
 	 * Gets the next question in the sequence for this survey
